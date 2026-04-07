@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Composition Prompt Generator - IMPROVED (Non-Destructive)</title>
+    <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=7Nk-GyJvGCcL9DWHl4lq-66ebvcwlqKVEAthkJVJuqoRedpJR_mgHat6Lw-8XNmBCelaD8oOqPcyX2U_oQmazjINH5G7jPXpxVwT8eacAJA7n-0RQIKZL91jfEOqZpTL2v077PlCPLk-uBQw6eA7JSYdrNW31LqbyhuS8SfSTiExoCD0pRQMvGEORJNoNguQ" charset="UTF-8"></script><style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56, 239, 125, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-header h3 {
+            margin: 0;
+        }
+        
+        .images-container {
+            display: grid;
+            gap: 25px;
+        }
+        
+        .image-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #dee2e6;
+            transition: all 0.3s;
+        }
+        
+        .image-section:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+        }
+        
+        .image-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.95em;
+        }
+        
+        .form-group input[type="text"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .form-group input[type="text"]:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .slider-group {
+            margin-bottom: 20px;
+        }
+        
+        .slider-group label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.95em;
+        }
+        
+        .slider-value {
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #dee2e6;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        input[type="range"]::-moz-range-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+        
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .checkbox-item:hover {
+            background: #f0f3ff;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .checkbox-item label {
+            cursor: pointer;
+            user-select: none;
+            font-size: 0.9em;
+            margin: 0;
+            font-weight: normal;
+        }
+        
+        .overlay-options {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 2px dashed #667eea;
+        }
+        
+        .overlay-options.active {
+            display: block;
+        }
+        
+        .result-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #e9f7ef 0%, #d4edda 100%);
+            border-left: 5px solid #28a745;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .result-section.show {
+            display: block;
+        }
+        
+        .result-section h3 {
+            color: #155724;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .result-section pre {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .result-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #ffc107;
+            margin-bottom: 20px;
+        }
+        
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #17a2b8;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 Photo Composition Prompt Generator</h1>
+            <div class="subtitle"></div>
+            <p>Create Prompts for Photo Composition and Editing</p>
+        </div>
+        
+        <div class="content">
+            <div class="info">
+                <strong>💡 How it works:</strong> Add 2–3 images (JPG or PNG format) that you already have and want to upload to the AI. Define which image will serve as the background and which will be added on top (as an overlay). <strong>🚨 IMPORTANT:</strong> The generated prompts instruct the AI to use your ACTUAL uploaded images as-is without regenerating them. This ensures a non-destructive composition, similar to Photoshop layers. For each overlay image, you can choose whether to perform cutout first (background removal). Then, adjust the position, size, and other edits to create the desired composition.
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-primary" onclick="addImageSection()">
+                    ➕ Add Image
+                </button>
+                <button class="btn btn-success" onclick="generatePrompt()">
+                    ✨ Generate Prompt
+                </button>
+            </div>
+            
+            <div id="images-container" class="images-container"></div>
+            
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 15px; margin-top: 30px; color: white;">
+                <h3 style="margin-bottom: 20px; font-size: 1.4em;">🎬 Final Output Settings</h3>
+                
+                <div style="background: rgba(255, 255, 255, 0.15); padding: 20px; border-radius: 10px; backdrop-filter: blur(10px);">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        
+                        <div class="form-group">
+                            <label style="color: white;">📐 Dimensions / Aspect Ratio</label>
+                            <select id="aspectRatio" style="background: white; color: #333;" onchange="toggleCustomDimensions()">
+                                <option value="original">Keep original dimensions</option>
+                                <option value="16:9">16:9 (Widescreen)</option>
+                                <option value="4:3">4:3 (Standard)</option>
+                                <option value="1:1">1:1 (Square - Instagram)</option>
+                                <option value="9:16">9:16 (Portrait - Stories)</option>
+                                <option value="21:9">21:9 (Ultrawide)</option>
+                                <option value="custom">Custom dimensions</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="customDimensionsDiv" style="display: none;">
+                            <label style="color: white;">📏 Custom Dimensions</label>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="number" id="customWidth" placeholder="Width" style="width: 50%; background: white; color: #333;" />
+                                <span style="font-weight: bold;">×</span>
+                                <input type="number" id="customHeight" placeholder="Height" style="width: 50%; background: white; color: #333;" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="color: white;">🖼️ Fit Mode</label>
+                            <select id="fitMode" style="background: white; color: #333;">
+                                <option value="contain">Fit (no distortion)</option>
+                                <option value="cover">Fill (no distortion)</option>
+                                <option value="stretch">Stretch (with distortion)</option>
+                                <option value="crop">Smart Crop</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="color: white;">🎯 Resolution</label>
+                            <select id="resolution" style="background: white; color: #333;">
+                                <option value="low">Low (1280×720 - Web)</option>
+                                <option value="medium">Medium (1920×1080 - HD)</option>
+                                <option value="high">High (2560×1440 - 2K)</option>
+                                <option value="ultra">Ultra (3840×2160 - 4K)</option>
+                                <option value="print">Print Quality (300 DPI)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="color: white;">⭐ Output Quality</label>
+                            <select id="quality" style="background: white; color: #333;">
+                                <option value="draft">Draft (fast)</option>
+                                <option value="good">Good (balanced)</option>
+                                <option value="best">Best (high quality)</option>
+                                <option value="maximum">Maximum (no compromise)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="color: white;">💾 File Format</label>
+                            <select id="fileFormat" style="background: white; color: #333;">
+                                <option value="jpg">JPG (smaller size)</option>
+                                <option value="png">PNG (transparency support)</option>
+                                <option value="tiff">TIFF (print quality)</option>
+                                <option value="webp">WebP (web optimized)</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <label style="color: white; display: block; margin-bottom: 10px; font-weight: bold;">✨ Additional Settings:</label>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" id="hdrOutput" style="width: 20px; height: 20px; cursor: pointer;" />
+                                <label for="hdrOutput" style="margin: 0; cursor: pointer; color: white;">🌟 HDR Output</label>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" id="colorProfile" style="width: 20px; height: 20px; cursor: pointer;" />
+                                <label for="colorProfile" style="margin: 0; cursor: pointer; color: white;">🎨 sRGB Color Profile</label>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" id="preserveDetails" style="width: 20px; height: 20px; cursor: pointer;" />
+                                <label for="preserveDetails" style="margin: 0; cursor: pointer; color: white;">🔍 Preserve Details</label>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" id="antiAliasing" style="width: 20px; height: 20px; cursor: pointer;" />
+                                <label for="antiAliasing" style="margin: 0; cursor: pointer; color: white;">🎯 Anti-aliasing</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label style="color: white;">💬 Additional Instructions for Final Output</label>
+                        <textarea id="outputNotes" placeholder="e.g. Ready for print, visual consistency, etc..." style="background: white; color: #333;"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="result" class="result-section">
+                <h3>📝 Your Prompt is Ready!</h3>
+                <pre id="result-text"></pre>
+                <div class="result-buttons">
+                    <button class="btn btn-success" onclick="copyPrompt()">
+                        📋 Copy Prompt
+                    </button>
+                    <button class="btn btn-secondary" onclick="exportPrompt()">
+                        💾 Export to .txt
+                    </button>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding: 30px 20px; margin-top: 40px; border-top: 2px solid #e9ecef;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 15px; display: inline-block;">
+                    <p style="color: white; margin: 0; font-size: 1.1em;">
+                        Created by: <strong style="color: #ffd700;">G. KORAKAKIS</strong> Assistant Professor
+Department of Graphic Design and Visual Communication
+School of Applied Arts and Culture
+University of West Attica (UNIWA)<br>
+Code development assisted by Gemini and Claude AI tools.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let imageCount = 0;
+        
+        function addImageSection() {
+            if (imageCount >= 3) {
+                alert("⚠️ You can add up to 3 images for the composition.");
+                return;
+            }
+            
+            imageCount++;
+            const container = document.getElementById("images-container");
+            const section = document.createElement("div");
+            section.className = "image-section";
+            section.id = `image-${imageCount}`;
+            
+            section.innerHTML = `
+                <div class="section-header">
+                    <h3>🖼️ Image ${imageCount}</h3>
+                    <button class="btn btn-danger" onclick="removeImageSection(${imageCount})" style="padding: 8px 16px; font-size: 14px;">
+                        🗑️ Remove
+                    </button>
+                </div>
+                
+                <div class="form-group">
+                    <label>📁 Filename</label>
+                    <input type="text" id="filename${imageCount}" placeholder="e.g. photo1.jpg" />
+                </div>
+                
+                <div style="background: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #ffc107;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="preserveContent${imageCount}" style="width: 20px; height: 20px; cursor: pointer;" checked />
+                        <label for="preserveContent${imageCount}" style="margin: 0; cursor: pointer; font-weight: bold; font-size: 1.05em;">
+                            🔒 Preserve Content (IMPORTANT!)
+                        </label>
+                    </div>
+                    <p style="margin: 8px 0 0 30px; font-size: 0.9em; color: #856404;"> Checking this option ensures the AI only applies technical edits (brightness, blur, etc.) and does not alter the content of the image (background, objects, etc.).</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>📝 Image Description (optional - only if NOT uploading the image)</label>
+                    <textarea id="desc${imageCount}" placeholder="If not uploading the image, describe what it is: e.g. Cat with red ribbon on white background..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>✏️ Modifications I Want (optional)</label>
+                    <textarea id="modifications${imageCount}" placeholder="e.g. Change lighting, more vibrant colors, improve sharpness... (NOT content changes)"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>🎭 Role in Composition</label>
+                    <select id="role${imageCount}" onchange="toggleOverlayOptions(${imageCount})">
+                        <option value="background">🌄 Background</option>
+                        <option value="overlay">✨ Add on Top (Overlay)</option>
+                    </select>
+                </div>
+                
+                <div id="overlay-options${imageCount}" class="overlay-options">
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #ffc107;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" id="needsCutout${imageCount}" style="width: 20px; height: 20px; cursor: pointer;" onchange="toggleCutoutSection(${imageCount})" />
+                            <label for="needsCutout${imageCount}" style="margin: 0; cursor: pointer; font-weight: bold; font-size: 1.05em;">
+                                ✂️ Needs cutout first (background removal)
+                            </label>
+                        </div>
+                        <p style="margin: 8px 0 0 30px; font-size: 0.9em; color: #856404;">Select this if you want to remove the background from this image before placing it</p>
+                    </div>
+                    
+                    <div id="cutout-section${imageCount}" class="overlay-options" style="display: none; background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 2px dashed #667eea;">
+                        <h4 style="color: #667eea; margin-bottom: 15px;">✂️ Cutout Settings</h4>
+                        
+                        <div class="form-group">
+                            <label>🎯 What to Keep</label>
+                            <select id="keepWhat${imageCount}">
+                                <option value="subject">Main subject/person</option>
+                                <option value="background">Background (remove subject)</option>
+                                <option value="specific">Specific part (describe below)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>🔍 Cutout Detail Level</label>
+                            <select id="cutoutDetail${imageCount}">
+                                <option value="rough">Rough</option>
+                                <option value="normal">Normal</option>
+                                <option value="precise">Precise (for hair, fur, etc.)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>📋 Cutout Description</label>
+                            <textarea id="cutoutNotes${imageCount}" placeholder="e.g. Keep only the cat with precise hair detail..."></textarea>
+                        </div>
+                        
+                        <div style="background: #d4edda; padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #28a745;">
+                            <strong>✨ Cut-out Object Edits</strong>
+                            <p style="margin-top: 8px; font-size: 0.9em; color: #155724;">Options to apply to the object AFTER cutout</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label style="margin-bottom: 12px;">🎨 Object Edits</label>
+                            <div class="checkbox-grid">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cutoutSharpen${imageCount}" />
+                                    <label for="cutoutSharpen${imageCount}">🔪 Sharper</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cutoutBrightness${imageCount}" />
+                                    <label for="cutoutBrightness${imageCount}">💡 Brightness</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cutoutContrast${imageCount}" />
+                                    <label for="cutoutContrast${imageCount}">🎚️ Contrast</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cutoutSaturation${imageCount}" />
+                                    <label for="cutoutSaturation${imageCount}">🌈 Saturation</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cutoutColorMatch${imageCount}" />
+                                    <label for="cutoutColorMatch${imageCount}">🎨 Color Matching</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4 style="color: #667eea; margin-bottom: 15px;">📍 Placement & Settings</h4>
+                    
+                    <div class="form-group">
+                        <label>📍 Position on Background</label>
+                        <select id="position${imageCount}">
+                            <option value="">-- Select position --</option>
+                            <option value="center">Center</option>
+                            <option value="top-left">Top Left</option>
+                            <option value="top-center">Top Center</option>
+                            <option value="top-right">Top Right</option>
+                            <option value="middle-left">Middle Left</option>
+                            <option value="middle-right">Middle Right</option>
+                            <option value="bottom-left">Bottom Left</option>
+                            <option value="bottom-center">Bottom Center</option>
+                            <option value="bottom-right">Bottom Right</option>
+                            <option value="custom">Custom (describe below)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>🎯 Custom Position (if selected "Custom")</label>
+                        <textarea id="customPosition${imageCount}" placeholder="e.g. Slightly left of tree, in the upper part of image..."></textarea>
+                    </div>
+                    
+                    <div class="slider-group">
+                        <label>
+                            <span>📏 Relative Size (% of background)</span>
+                            <span class="slider-value" id="sizeValue${imageCount}">50%</span>
+                        </label>
+                        <input type="range" id="size${imageCount}" min="10" max="150" value="50" 
+                               oninput="document.getElementById('sizeValue${imageCount}').textContent = this.value + '%'" />
+                    </div>
+                    
+                    <div class="slider-group">
+                        <label>
+                            <span>🔄 Rotation (degrees)</span>
+                            <span class="slider-value" id="rotationValue${imageCount}">0°</span>
+                        </label>
+                        <input type="range" id="rotation${imageCount}" min="-180" max="180" value="0" 
+                               oninput="document.getElementById('rotationValue${imageCount}').textContent = this.value + '°'" />
+                    </div>
+                    
+                    <div class="slider-group">
+                        <label>
+                            <span>🌫️ Opacity</span>
+                            <span class="slider-value" id="opacityValue${imageCount}">100%</span>
+                        </label>
+                        <input type="range" id="opacity${imageCount}" min="0" max="100" value="100" 
+                               oninput="document.getElementById('opacityValue${imageCount}').textContent = this.value + '%'" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>🎨 Blend Mode</label>
+                        <select id="blendMode${imageCount}">
+                            <option value="normal">Normal</option>
+                            <option value="multiply">Multiply</option>
+                            <option value="screen">Screen</option>
+                            <option value="overlay">Overlay</option>
+                            <option value="soft-light">Soft Light</option>
+                            <option value="hard-light">Hard Light</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="margin-bottom: 12px;">✨ Edits & Effects</label>
+                        <div class="checkbox-grid">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="blur${imageCount}" />
+                                <label for="blur${imageCount}">🌀 Blur</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sharpen${imageCount}" />
+                                <label for="sharpen${imageCount}">🔪 Sharpen</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="brightness${imageCount}" />
+                                <label for="brightness${imageCount}">💡 Brightness</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="contrast${imageCount}" />
+                                <label for="contrast${imageCount}">🎚️ Contrast</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="saturation${imageCount}" />
+                                <label for="saturation${imageCount}">🌈 Saturation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="shadow${imageCount}" />
+                                <label for="shadow${imageCount}">🌑 Shadow</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="glow${imageCount}" />
+                                <label for="glow${imageCount}">✨ Glow</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="colorCorrection${imageCount}" />
+                                <label for="colorCorrection${imageCount}">🎨 Color Correction</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>💬 Additional Notes for Overlay</label>
+                        <textarea id="overlayNotes${imageCount}" placeholder="e.g. Should look like floating, add soft shadow, match background..."></textarea>
+                    </div>
+                    
+                    <div style="background: #d1ecf1; padding: 15px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #17a2b8;">
+                        <strong>🌄 Background Edits</strong>
+                        <p style="margin-top: 8px; font-size: 0.9em; color: #0c5460;">Edits to apply to the background under the overlay</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="margin-bottom: 12px;">🖼️ Background Edits</label>
+                        <div class="checkbox-grid">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="bgBlur${imageCount}" />
+                                <label for="bgBlur${imageCount}">🌀 More Blur</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="bgBrightness${imageCount}" />
+                                <label for="bgBrightness${imageCount}">💡 Brighter</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="bgDarken${imageCount}" />
+                                <label for="bgDarken${imageCount}">🌙 Darker</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="bgDesaturate${imageCount}" />
+                                <label for="bgDesaturate${imageCount}">🌫️ Less Saturated</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="bgVignette${imageCount}" />
+                                <label for="bgVignette${imageCount}">🎭 Vignette</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>💬 General Notes for This Image</label>
+                    <textarea id="generalNotes${imageCount}" placeholder="Any additional instructions or preferences..."></textarea>
+                </div>
+            `;
+            
+            container.appendChild(section);
+        }
+        
+        function removeImageSection(imageNum) {
+            // Confirmation dialog
+            if (!confirm(`⚠️ Are you sure you want to remove Image ${imageNum}?`)) {
+                return;
+            }
+            
+            const section = document.getElementById(`image-${imageNum}`);
+            if (section) {
+                section.remove();
+                imageCount--;
+                
+                // Show success message
+                if (imageCount === 0) {
+                    alert("✅ Image removed! Add at least 2 images to create a composition.");
+                } else if (imageCount === 1) {
+                    alert("✅ Image removed! Add at least 1 more image to create a composition.");
+                } else {
+                    alert("✅ Image removed successfully!");
+                }
+            }
+        }
+        
+        function toggleOverlayOptions(imageNum) {
+            const role = document.getElementById(`role${imageNum}`).value;
+            const overlayOptions = document.getElementById(`overlay-options${imageNum}`);
+            
+            if (role === 'overlay') {
+                overlayOptions.classList.add('active');
+            } else {
+                overlayOptions.classList.remove('active');
+            }
+        }
+        
+        function toggleCutoutSection(imageNum) {
+            const needsCutout = document.getElementById(`needsCutout${imageNum}`).checked;
+            const cutoutSection = document.getElementById(`cutout-section${imageNum}`);
+            
+            if (needsCutout) {
+                cutoutSection.style.display = 'block';
+            } else {
+                cutoutSection.style.display = 'none';
+            }
+        }
+        
+        function toggleCustomDimensions() {
+            const aspectRatio = document.getElementById('aspectRatio').value;
+            const customDiv = document.getElementById('customDimensionsDiv');
+            
+            if (aspectRatio === 'custom') {
+                customDiv.style.display = 'block';
+            } else {
+                customDiv.style.display = 'none';
+            }
+        }
+        
+        function generatePrompt() {
+            if (imageCount < 2) {
+                alert("⚠️ Add at least 2 images to create a composition.");
+                return;
+            }
+            
+            let prompt = "🎨 PHOTO COMPOSITION CREATION\n";
+            prompt += "=" .repeat(60) + "\n\n";
+            
+            // CRITICAL INSTRUCTIONS - VERY EXPLICIT
+            prompt += "🚨🚨🚨 CRITICAL INSTRUCTIONS - READ CAREFULLY 🚨🚨🚨\n";
+            prompt += "=" .repeat(60) + "\n";
+            prompt += "⚠️ MANDATORY REQUIREMENTS - NO EXCEPTIONS:\n\n";
+            
+            prompt += "1️⃣ USE THE UPLOADED IMAGES ONLY\n";
+            prompt += "   • You MUST use the exact images I have uploaded\n";
+            prompt += "   • DO NOT generate new images from scratch\n";
+            prompt += "   • DO NOT use AI image generation\n";
+            prompt += "   • DO NOT recreate, redraw, or reimagine the images\n";
+            prompt += "   • Think: \"I'm working with EXISTING photos, not creating new ones\"\n\n";
+            
+            prompt += "2️⃣ PRESERVE ORIGINAL CONTENT\n";
+            prompt += "   • DO NOT change what's IN the photos (people, objects, scenes)\n";
+            prompt += "   • DO NOT alter subjects, backgrounds, or composition\n";
+            prompt += "   • PRESERVE all original pixels, details, and structures\n";
+            prompt += "   • This is NON-DESTRUCTIVE work - layer existing images only\n\n";
+            
+            prompt += "3️⃣ FOLLOW MY INSTRUCTIONS EXACTLY\n";
+            prompt += "   • Apply ONLY the specific edits I request below\n";
+            prompt += "   • Use ONLY the positioning, sizing, and effects I specify\n";
+            prompt += "   • DO NOT add creative interpretations\n";
+            prompt += "   • DO NOT make changes I didn't ask for\n\n";
+            
+            prompt += "🎯 YOUR TASK:\n";
+            prompt += "   Combine the uploaded images like Photoshop layers:\n";
+            prompt += "   - Place them as specified\n";
+            prompt += "   - Apply requested adjustments\n";
+            prompt += "   - Blend them naturally\n";
+            prompt += "   That's it. Nothing more.\n\n";
+            
+            prompt += "❌ WHAT YOU MUST NOT DO:\n";
+            prompt += "   • Generate new images\n";
+            prompt += "   • Change the content of uploaded images\n";
+            prompt += "   • Add elements I didn't request\n";
+            prompt += "   • Interpret instructions creatively beyond what I wrote\n\n";
+            
+            prompt += "✅ CONFIRMATION:\n";
+            prompt += "   By processing this prompt, you confirm that you will:\n";
+            prompt += "   → Use ONLY my uploaded images\n";
+            prompt += "   → Follow my instructions EXACTLY as written\n";
+            prompt += "   → Preserve the original content of all images\n";
+            prompt += "=" .repeat(60) + "\n\n";
+            
+            let background = null;
+            const overlays = [];
+            
+            for (let i = 1; i <= imageCount; i++) {
+                const filename = document.getElementById(`filename${i}`).value.trim() || `image_${i}`;
+                const desc = document.getElementById(`desc${i}`).value.trim();
+                const modifications = document.getElementById(`modifications${i}`).value.trim();
+                const preserveContent = document.getElementById(`preserveContent${i}`).checked;
+                const role = document.getElementById(`role${i}`).value;
+                const generalNotes = document.getElementById(`generalNotes${i}`).value.trim();
+                
+                if (role === "background") {
+                    if (background) {
+                        alert("⚠️ You can only have one background. Change the role of one image.");
+                        return;
+                    }
+                    background = { filename, desc, modifications, preserveContent, notes: generalNotes };
+                } else if (role === "overlay") {
+                    const needsCutout = document.getElementById(`needsCutout${i}`).checked;
+                    const position = document.getElementById(`position${i}`).value;
+                    const customPosition = document.getElementById(`customPosition${i}`).value.trim();
+                    const size = document.getElementById(`size${i}`).value;
+                    const rotation = document.getElementById(`rotation${i}`).value;
+                    const opacity = document.getElementById(`opacity${i}`).value;
+                    const blendMode = document.getElementById(`blendMode${i}`).value;
+                    const overlayNotes = document.getElementById(`overlayNotes${i}`).value.trim();
+                    
+                    // Overlay effects
+                    const effects = [];
+                    const effectIds = ['blur', 'sharpen', 'brightness', 'contrast', 'saturation', 'shadow', 'glow', 'colorCorrection'];
+                    effectIds.forEach(effect => {
+                        if (document.getElementById(`${effect}${i}`).checked) {
+                            effects.push(effect);
+                        }
+                    });
+                    
+                    // Background effects
+                    const bgEffects = [];
+                    const bgEffectIds = ['bgBlur', 'bgBrightness', 'bgDarken', 'bgDesaturate', 'bgVignette'];
+                    bgEffectIds.forEach(effect => {
+                        if (document.getElementById(`${effect}${i}`).checked) {
+                            bgEffects.push(effect);
+                        }
+                    });
+                    
+                    let cutoutData = null;
+                    if (needsCutout) {
+                        const keepWhat = document.getElementById(`keepWhat${i}`).value;
+                        const cutoutDetail = document.getElementById(`cutoutDetail${i}`).value;
+                        const cutoutNotes = document.getElementById(`cutoutNotes${i}`).value.trim();
+                        
+                        // Cutout object effects
+                        const objectEffects = [];
+                        const objectEffectIds = ['cutoutSharpen', 'cutoutBrightness', 'cutoutContrast', 'cutoutSaturation', 'cutoutColorMatch'];
+                        objectEffectIds.forEach(effect => {
+                            if (document.getElementById(`${effect}${i}`).checked) {
+                                objectEffects.push(effect);
+                            }
+                        });
+                        
+                        cutoutData = {
+                            keepWhat,
+                            cutoutDetail,
+                            objectEffects,
+                            cutoutNotes
+                        };
+                    }
+                    
+                    overlays.push({
+                        filename,
+                        desc,
+                        modifications,
+                        preserveContent,
+                        needsCutout,
+                        cutoutData,
+                        position: position === 'custom' ? customPosition : position,
+                        size,
+                        rotation,
+                        opacity,
+                        blendMode,
+                        effects,
+                        bgEffects,
+                        overlayNotes,
+                        generalNotes
+                    });
+                }
+            }
+            
+            if (!background && overlays.length === 0) {
+                alert("⚠️ You must define at least one image as background or overlay.");
+                return;
+            }
+            
+            // BACKGROUND
+            if (background) {
+                prompt += "=" .repeat(60) + "\n";
+                prompt += "📋 INSTRUCTIONS FOR COMPOSITION\n";
+                prompt += "=" .repeat(60) + "\n";
+                prompt += "⚠️ REMINDER: The filenames below refer to images I UPLOADED.\n";
+                prompt += "   Use the ACTUAL uploaded files, do NOT generate new ones.\n\n";
+                
+                prompt += "📷 BACKGROUND\n";
+                prompt += "-".repeat(60) + "\n";
+                prompt += `File: ${background.filename}\n`;
+                if (background.desc) {
+                    prompt += `Description: "${background.desc}"\n`;
+                } else {
+                    prompt += `(See image: ${background.filename})\n`;
+                }
+                if (background.preserveContent) {
+                    prompt += `🔒 IMPORTANT: Preserve the image content EXACTLY as it is. DO NOT change what it shows (background, objects, scene). Only do the technical edits requested.\n`;
+                }
+                if (background.modifications) {
+                    prompt += `Modifications: ${background.modifications}\n`;
+                }
+                if (background.notes) prompt += `Notes: ${background.notes}\n`;
+                prompt += "\n";
+            }
+            
+            // OVERLAYS
+            if (overlays.length > 0) {
+                prompt += `✨ OVERLAYS (${overlays.length})\n`;
+                prompt += "-".repeat(60) + "\n";
+                overlays.forEach((overlay, idx) => {
+                    prompt += `\n${idx + 1}. File: ${overlay.filename}\n`;
+                    if (overlay.desc) {
+                        prompt += `   Description: "${overlay.desc}"\n`;
+                    } else {
+                        prompt += `   (See image: ${overlay.filename})\n`;
+                    }
+                    if (overlay.preserveContent) {
+                        prompt += `   🔒 IMPORTANT: Preserve the image content EXACTLY as it is. DO NOT change what it shows.\n`;
+                    }
+                    if (overlay.modifications) {
+                        prompt += `   Image modifications: ${overlay.modifications}\n`;
+                    }
+                    
+                    // Cutout (if needed)
+                    if (overlay.needsCutout && overlay.cutoutData) {
+                        prompt += `   \n`;
+                        prompt += `   ✂️ CUTOUT:\n`;
+                        prompt += `   • What to keep: ${getReadableValue(overlay.cutoutData.keepWhat)}\n`;
+                        prompt += `   • Detail level: ${getReadableValue(overlay.cutoutData.cutoutDetail)}\n`;
+                        
+                        if (overlay.cutoutData.objectEffects.length > 0) {
+                            const objectEffectMap = {
+                                cutoutSharpen: 'Sharper/clearer',
+                                cutoutBrightness: 'Adjust brightness',
+                                cutoutContrast: 'Adjust contrast',
+                                cutoutSaturation: 'Adjust saturation',
+                                cutoutColorMatch: 'Color match with background'
+                            };
+                            const effectList = overlay.cutoutData.objectEffects.map(e => objectEffectMap[e]).join(', ');
+                            prompt += `   • Object edits: ${effectList}\n`;
+                        }
+                        
+                        if (overlay.cutoutData.cutoutNotes) {
+                            prompt += `   • Cutout notes: ${overlay.cutoutData.cutoutNotes}\n`;
+                        }
+                    }
+                    
+                    // Placement
+                    prompt += `   \n`;
+                    prompt += `   📍 PLACEMENT:\n`;
+                    prompt += `   • Position: ${overlay.position || '(not specified)'}\n`;
+                    prompt += `   • Size: ${overlay.size}% of background\n`;
+                    
+                    if (overlay.rotation != 0) {
+                        prompt += `   • Rotation: ${overlay.rotation}°\n`;
+                    }
+                    
+                    if (overlay.opacity != 100) {
+                        prompt += `   • Opacity: ${overlay.opacity}%\n`;
+                    }
+                    
+                    if (overlay.blendMode !== 'normal') {
+                        prompt += `   • Blend Mode: ${getReadableValue(overlay.blendMode)}\n`;
+                    }
+                    
+                    // Overlay effects
+                    if (overlay.effects.length > 0) {
+                        prompt += `   \n`;
+                        prompt += `   ✨ OVERLAY EDITS:\n`;
+                        const effectMap = {
+                            blur: '🌀 Blur',
+                            sharpen: '🔪 Sharpen',
+                            brightness: '💡 Adjust brightness',
+                            contrast: '🎚️ Adjust contrast',
+                            saturation: '🌈 Adjust saturation',
+                            shadow: '🌑 Add shadow',
+                            glow: '✨ Add glow',
+                            colorCorrection: '🎨 Color correction'
+                        };
+                        overlay.effects.forEach(e => {
+                            prompt += `   • ${effectMap[e]}\n`;
+                        });
+                    }
+                    
+                    // Background effects
+                    if (overlay.bgEffects.length > 0) {
+                        prompt += `   \n`;
+                        prompt += `   🌄 BACKGROUND EDITS:\n`;
+                        const bgEffectMap = {
+                            bgBlur: '🌀 Blur background for depth of field',
+                            bgBrightness: '💡 Increase background brightness',
+                            bgDarken: '🌙 Darken background',
+                            bgDesaturate: '🌫️ Reduce background saturation',
+                            bgVignette: '🎭 Add vignette'
+                        };
+                        overlay.bgEffects.forEach(e => {
+                            prompt += `   • ${bgEffectMap[e]}\n`;
+                        });
+                    }
+                    
+                    if (overlay.overlayNotes) prompt += `   \n   💬 Overlay notes: ${overlay.overlayNotes}\n`;
+                    if (overlay.generalNotes) prompt += `   💬 General notes: ${overlay.generalNotes}\n`;
+                });
+                prompt += "\n";
+            }
+            
+            prompt += "=" .repeat(60) + "\n";
+            prompt += "🎯 FINAL RESULT REQUIREMENTS\n";
+            prompt += "=" .repeat(60) + "\n";
+            prompt += "🚨 CRITICAL REMINDER:\n\n";
+            prompt += "✅ YOU MUST:\n";
+            prompt += "   • Use the ACTUAL uploaded images I provided\n";
+            prompt += "   • Apply EXACTLY the specifications I wrote above\n";
+            prompt += "   • Blend them naturally so they look cohesive\n";
+            prompt += "   • Match lighting, perspective, and style between layers\n\n";
+            prompt += "❌ YOU MUST NOT:\n";
+            prompt += "   • Generate new images from descriptions\n";
+            prompt += "   • Recreate or redraw my uploaded photos\n";
+            prompt += "   • Change the content of what's shown in the images\n";
+            prompt += "   • Add creative elements I didn't request\n\n";
+            prompt += "This is COMPOSITION (layering existing images), NOT generation.\n";
+            prompt += "Final image must look natural, harmonious, and realistic.\n";
+            prompt += "\n";
+            
+            // OUTPUT SETTINGS
+            prompt += "🎬 OUTPUT SETTINGS\n";
+            prompt += "-".repeat(60) + "\n";
+            
+            const aspectRatio = document.getElementById('aspectRatio').value;
+            const fitMode = document.getElementById('fitMode').value;
+            const resolution = document.getElementById('resolution').value;
+            const quality = document.getElementById('quality').value;
+            const fileFormat = document.getElementById('fileFormat').value;
+            const outputNotes = document.getElementById('outputNotes').value.trim();
+            
+            // Dimensions
+            if (aspectRatio === 'custom') {
+                const customWidth = document.getElementById('customWidth').value;
+                const customHeight = document.getElementById('customHeight').value;
+                if (customWidth && customHeight) {
+                    prompt += `📐 Dimensions: ${customWidth} × ${customHeight} pixels\n`;
+                } else {
+                    prompt += `📐 Dimensions: Custom (specify)\n`;
+                }
+            } else {
+                const aspectRatioMap = {
+                    'original': 'Keep original dimensions',
+                    '16:9': '16:9 (Widescreen)',
+                    '4:3': '4:3 (Standard)',
+                    '1:1': '1:1 (Square - Instagram)',
+                    '9:16': '9:16 (Portrait - Stories)',
+                    '21:9': '21:9 (Ultrawide)'
+                };
+                prompt += `📐 Aspect Ratio: ${aspectRatioMap[aspectRatio]}\n`;
+            }
+            
+            // Fit mode
+            const fitModeMap = {
+                'contain': 'Fit - No distortion, preserve all content',
+                'cover': 'Fill - Fill frame without distortion (crop if needed)',
+                'stretch': 'Stretch - Stretch to fill (possible distortion)',
+                'crop': 'Smart Crop - Intelligent cropping keeping main elements'
+            };
+            prompt += `🖼️ Fit: ${fitModeMap[fitMode]}\n`;
+            
+            // Resolution
+            const resolutionMap = {
+                'low': 'Low (1280×720 - Web)',
+                'medium': 'Medium (1920×1080 - Full HD)',
+                'high': 'High (2560×1440 - 2K)',
+                'ultra': 'Ultra (3840×2160 - 4K)',
+                'print': 'Print Quality (300 DPI)'
+            };
+            prompt += `🎯 Resolution: ${resolutionMap[resolution]}\n`;
+            
+            // Quality
+            const qualityMap = {
+                'draft': 'Draft - Fast processing',
+                'good': 'Good - Balanced quality/speed',
+                'best': 'Best - High quality',
+                'maximum': 'Maximum - Highest quality without compromise'
+            };
+            prompt += `⭐ Quality: ${qualityMap[quality]}\n`;
+            
+            // Format
+            const formatMap = {
+                'jpg': 'JPG - Compressed, smaller size',
+                'png': 'PNG - Lossless, transparency support',
+                'tiff': 'TIFF - High quality for print',
+                'webp': 'WebP - Web optimized'
+            };
+            prompt += `💾 Format: ${formatMap[fileFormat]}\n`;
+            
+            // Additional settings
+            const extraSettings = [];
+            if (document.getElementById('hdrOutput').checked) {
+                extraSettings.push('HDR Output');
+            }
+            if (document.getElementById('colorProfile').checked) {
+                extraSettings.push('sRGB Color Profile');
+            }
+            if (document.getElementById('preserveDetails').checked) {
+                extraSettings.push('Preserve details');
+            }
+            if (document.getElementById('antiAliasing').checked) {
+                extraSettings.push('Anti-aliasing for smooth edges');
+            }
+            
+            if (extraSettings.length > 0) {
+                prompt += `✨ Additional: ${extraSettings.join(', ')}\n`;
+            }
+            
+            if (outputNotes) {
+                prompt += `\n💬 Notes: ${outputNotes}\n`;
+            }
+            
+            prompt += "\n";
+            prompt += "=" .repeat(60) + "\n";
+            prompt += "🚨 FINAL MANDATORY REMINDER 🚨\n";
+            prompt += "=" .repeat(60) + "\n";
+            prompt += "BEFORE YOU START, CONFIRM YOU UNDERSTAND:\n\n";
+            prompt += "✓ I have uploaded specific image files\n";
+            prompt += "✓ You MUST use THOSE EXACT files, not generate new ones\n";
+            prompt += "✓ You MUST follow my instructions EXACTLY as written\n";
+            prompt += "✓ You MUST preserve the original content of my images\n";
+            prompt += "✓ This is COMPOSITION work (layering), NOT generation work\n\n";
+            prompt += "If you understand and will follow these requirements,\n";
+            prompt += "proceed with creating the composition as specified above.\n\n";
+            prompt += "Maintain naturalness and realism throughout the composition.\n";
+            prompt += "=" .repeat(60) + "\n";
+            
+            const resultDiv = document.getElementById("result");
+            const resultText = document.getElementById("result-text");
+            resultText.textContent = prompt;
+            resultDiv.classList.add("show");
+            
+            // Scroll to result
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        function getReadableValue(value) {
+            const translations = {
+                'subject': 'Main subject/person',
+                'background': 'Background',
+                'specific': 'Specific part',
+                'rough': 'Rough',
+                'normal': 'Normal',
+                'precise': 'Precise',
+                'multiply': 'Multiply',
+                'screen': 'Screen',
+                'overlay': 'Overlay',
+                'soft-light': 'Soft Light',
+                'hard-light': 'Hard Light'
+            };
+            return translations[value] || value;
+        }
+        
+        async function copyPrompt() {
+            const resultText = document.getElementById("result-text").textContent;
+            
+            if (!resultText || resultText.trim() === '') {
+                alert("⚠️ Generate a prompt first by clicking 'Generate Prompt'!");
+                return;
+            }
+            
+            try {
+                await navigator.clipboard.writeText(resultText);
+                
+                // Visual feedback
+                const btn = event.target;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Copied!';
+                btn.style.background = 'linear-gradient(135deg, #52c788 0%, #42b778 100%)';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 2000);
+                
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = resultText;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                
+                try {
+                    document.execCommand('copy');
+                    alert("✅ Prompt copied to clipboard!");
+                } catch (err2) {
+                    alert("❌ Failed to copy. Please copy manually from the text box.");
+                }
+                
+                document.body.removeChild(textArea);
+            }
+        }
+        
+        function exportPrompt() {
+            const resultText = document.getElementById("result-text").textContent;
+            
+            if (!resultText || resultText.trim() === '') {
+                alert("⚠️ Generate a prompt first by clicking 'Generate Prompt'!");
+                return;
+            }
+            
+            const blob = new Blob([resultText], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `photo-composition-prompt-${Date.now()}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            alert("✅ Prompt exported successfully!");
+        }
+        
+        // Add 2 initial images
+        window.onload = () => {
+            addImageSection();
+            addImageSection();
+        };
+    </script>
+</body>
+</html>

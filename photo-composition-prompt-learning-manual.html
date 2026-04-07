@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Composition Prompt Generator - Educational Manual for Students</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-top: 10px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px;
+            font-weight: 600;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .toc {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 2px solid #dee2e6;
+        }
+        
+        .toc h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            margin: 12px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .toc li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .toc a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .toc a:hover {
+            color: #667eea;
+        }
+        
+        .section {
+            margin: 50px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .section h4 {
+            color: #495057;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+        
+        .learning-objective {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 5px solid #2196f3;
+        }
+        
+        .learning-objective h4 {
+            color: #1976d2;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .learning-objective ul {
+            margin-left: 20px;
+        }
+        
+        .concept-card {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid #667eea;
+        }
+        
+        .concept-card h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .concept-card .definition {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-style: italic;
+            border-left: 3px solid #667eea;
+        }
+        
+        .concept-card .technical-note {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        
+        .exercise-box {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 2px solid #9c27b0;
+        }
+        
+        .exercise-box h4 {
+            color: #7b1fa2;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .exercise-box .difficulty {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .difficulty.beginner {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+        
+        .difficulty.intermediate {
+            background: #fff9c4;
+            color: #f57c00;
+        }
+        
+        .difficulty.advanced {
+            background: #ffcdd2;
+            color: #c62828;
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 2px solid #ffa726;
+        }
+        
+        .example-box h4 {
+            color: #ef6c00;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .example-box .example-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-top: 15px;
+            font-size: 1.05em;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #4caf50;
+        }
+        
+        .tip-box:before {
+            content: "💡 PRO TIP: ";
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #ff9800;
+        }
+        
+        .warning-box:before {
+            content: "⚠️ CAUTION: ";
+            font-weight: bold;
+            color: #e65100;
+        }
+        
+        .important-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #f44336;
+        }
+        
+        .important-box:before {
+            content: "❗ IMPORTANT: ";
+            font-weight: bold;
+            color: #c62828;
+        }
+        
+        .step {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+        
+        .step-content {
+            display: inline-block;
+            vertical-align: middle;
+            width: calc(100% - 60px);
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+            font-size: 0.9em;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .quiz-question {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .quiz-question h5 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            background: #343a40;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            .section {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📸 Photo Composition Prompt Generator</h1>
+            <p class="subtitle">Educational Manual for Digital Image Editing Students</p>
+            <div style="margin-top: 20px;">
+                <span class="badge">Prompt Engineering</span>
+                <span class="badge">Digital Composition</span>
+                <span class="badge">AI Tools</span>
+            </div>
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
+                <p style="font-size: 1em; margin-bottom: 8px;"><strong>Authors:</strong></p>
+                <p style="font-size: 0.95em; line-height: 1.6;">
+                    G. Korakakis<br>
+                    K. Dalacosta<br>
+                    Our. Efstathiadou<br>
+                    A. Karamani<br>
+                    Claude (Anthropic AI Assistant)
+                </p>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- TABLE OF CONTENTS -->
+            <div class="toc">
+                <h2>📋 Table of Contents</h2>
+                <ul>
+                    <li><a href="#intro">1. Introduction to Prompt Engineering for Image Composition</a></li>
+                    <li><a href="#fundamentals">2. Fundamental Concepts</a></li>
+                    <li><a href="#interface">3. Tool Interface & Workflow</a></li>
+                    <li><a href="#layers">4. Understanding Layers & Composition Theory</a></li>
+                    <li><a href="#parameters">5. Technical Parameters Explained</a></li>
+                    <li><a href="#blend-modes">6. Blend Modes: Theory & Application</a></li>
+                    <li><a href="#masking">7. Masking & Edge Control Techniques</a></li>
+                    <li><a href="#color-theory">8. Color Theory & Image Adjustments</a></li>
+                    <li><a href="#output">9. Output Optimization & Format Selection</a></li>
+                    <li><a href="#exercises">10. Practical Exercises & Projects</a></li>
+                    <li><a href="#advanced">11. Advanced Techniques</a></li>
+                    <li><a href="#assessment">12. Self-Assessment & Quiz</a></li>
+                </ul>
+            </div>
+
+            <!-- SECTION 1: INTRODUCTION -->
+            <div class="section" id="intro">
+                <h2><span class="icon">🎯</span> 1. Introduction to Prompt Engineering for Image Composition</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Understand what prompt engineering is and its role in AI-assisted image editing</li>
+                        <li>Learn the purpose and workflow of composition prompt generation</li>
+                        <li>Recognize the difference between image generation and image composition</li>
+                        <li>Identify real-world applications in digital media production</li>
+                    </ul>
+                </div>
+                
+                <h3>1.1 What is Prompt Engineering?</h3>
+                
+                <div class="concept-card">
+                    <h4>Definition</h4>
+                    <div class="definition">
+                        <strong>Prompt Engineering</strong> is the practice of crafting precise, detailed instructions (prompts) that guide AI systems to produce desired outcomes. In the context of image composition, it involves creating specifications that tell an AI tool exactly how to combine multiple images into a cohesive final result.
+                    </div>
+                    <p>This tool helps you create structured, professional prompts for AI-powered image composition tools like Claude, ChatGPT with image capabilities, Adobe Firefly, or specialized composition software.</p>
+                </div>
+                
+                <h3>1.2 Image Composition vs. Image Generation</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Image Generation</th>
+                            <th>Image Composition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Input</strong></td>
+                            <td>Text description only</td>
+                            <td>Existing images + specifications</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Process</strong></td>
+                            <td>Creates new images from scratch</td>
+                            <td>Combines existing images</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Output</strong></td>
+                            <td>Synthetic/generated content</td>
+                            <td>Layered composition of real images</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Control</strong></td>
+                            <td>Limited control over specific details</td>
+                            <td>Precise control over each element</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Use Case</strong></td>
+                            <td>Creating new artwork, concepts</td>
+                            <td>Photo editing, realistic composites</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="important-box">
+                    This tool creates <strong>composition prompts</strong>, not generation prompts. You must have existing images to work with. The prompt tells AI how to combine YOUR images, not how to create new ones.
+                </div>
+                
+                <h3>1.3 Real-World Applications</h3>
+                
+                <ul>
+                    <li><strong>Advertising & Marketing:</strong> Product photos with custom backgrounds</li>
+                    <li><strong>Social Media Content:</strong> Instagram posts, stories, collages</li>
+                    <li><strong>E-commerce:</strong> Product presentations with lifestyle contexts</li>
+                    <li><strong>Photography:</strong> Artistic composites, double exposures</li>
+                    <li><strong>Graphic Design:</strong> Posters, promotional materials</li>
+                    <li><strong>Web Design:</strong> Hero images, banners</li>
+                </ul>
+                
+                <h3>1.4 Prerequisites</h3>
+                
+                <p>Before using this tool effectively, you should have basic knowledge of:</p>
+                <ul>
+                    <li>Digital image formats (JPG, PNG, TIFF)</li>
+                    <li>Basic photo editing concepts</li>
+                    <li>Understanding of layers (from Photoshop, GIMP, etc.)</li>
+                    <li>Familiarity with AI image processing tools</li>
+                </ul>
+            </div>
+
+            <!-- SECTION 2: FUNDAMENTAL CONCEPTS -->
+            <div class="section" id="fundamentals">
+                <h2><span class="icon">📚</span> 2. Fundamental Concepts</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Master core concepts of digital image composition</li>
+                        <li>Understand layer-based editing paradigm</li>
+                        <li>Learn image coordinate systems and positioning</li>
+                        <li>Grasp fundamental color and lighting principles</li>
+                    </ul>
+                </div>
+                
+                <h3>2.1 The Layer System</h3>
+                
+                <div class="concept-card">
+                    <h4>Understanding Layers</h4>
+                    <div class="definition">
+                        A <strong>layer</strong> is an independent image element that can be manipulated separately from other elements. Layers stack on top of each other, with the bottom layer typically being the background and upper layers containing foreground elements.
+                    </div>
+                    
+                    <h4>Layer Properties:</h4>
+                    <ul>
+                        <li><strong>Z-Index:</strong> The stacking order (which layer is on top)</li>
+                        <li><strong>Opacity:</strong> Transparency level (0-100%)</li>
+                        <li><strong>Blend Mode:</strong> How the layer interacts with layers below</li>
+                        <li><strong>Transform:</strong> Position, size, rotation</li>
+                        <li><strong>Effects:</strong> Blur, brightness, contrast, etc.</li>
+                    </ul>
+                </div>
+                
+                <h3>2.2 Canvas & Coordinate System</h3>
+                
+                <div class="concept-card">
+                    <h4>The Canvas</h4>
+                    <p>The canvas is your working area - the final image dimensions. Understanding canvas coordinates is essential for precise positioning.</p>
+                    
+                    <div class="technical-note">
+                        <strong>Coordinate System:</strong> Digital images use a pixel-based coordinate system where (0,0) is typically the top-left corner. X increases to the right, Y increases downward.
+                    </div>
+                    
+                    <h4>Position Terminology:</h4>
+                    <ul>
+                        <li><strong>Top-Left:</strong> (0%, 0%) or (0px, 0px)</li>
+                        <li><strong>Center:</strong> (50%, 50%)</li>
+                        <li><strong>Bottom-Right:</strong> (100%, 100%)</li>
+                    </ul>
+                </div>
+                
+                <h3>2.3 Resolution & Quality</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Term</th>
+                            <th>Definition</th>
+                            <th>Typical Values</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Resolution</strong></td>
+                            <td>Number of pixels (width × height)</td>
+                            <td>1920×1080, 3840×2160</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DPI/PPI</strong></td>
+                            <td>Dots/Pixels per inch (print quality)</td>
+                            <td>72 (web), 300 (print)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Aspect Ratio</strong></td>
+                            <td>Width to height proportion</td>
+                            <td>16:9, 4:3, 1:1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bit Depth</strong></td>
+                            <td>Color information per pixel</td>
+                            <td>8-bit, 16-bit, 32-bit</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>2.4 Color Spaces</h3>
+                
+                <div class="concept-card">
+                    <h4>Common Color Spaces in Digital Imaging</h4>
+                    
+                    <ul>
+                        <li><strong>RGB (Red, Green, Blue):</strong> Standard for digital displays. Additive color model.</li>
+                        <li><strong>CMYK (Cyan, Magenta, Yellow, Black):</strong> Used for printing. Subtractive color model.</li>
+                        <li><strong>sRGB:</strong> Standardized RGB color space for web and general use.</li>
+                        <li><strong>Adobe RGB:</strong> Wider color gamut for professional photography.</li>
+                        <li><strong>HSL/HSV:</strong> Hue, Saturation, Lightness/Value - intuitive for color adjustments.</li>
+                    </ul>
+                    
+                    <div class="tip-box">
+                        For web and social media, always use sRGB color space. For print, convert to CMYK before sending to press.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: INTERFACE -->
+            <div class="section" id="interface">
+                <h2><span class="icon">🖥️</span> 3. Tool Interface & Workflow</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Navigate the tool interface efficiently</li>
+                        <li>Understand the purpose of each control element</li>
+                        <li>Master the composition workflow from start to finish</li>
+                        <li>Learn best practices for organizing layers</li>
+                    </ul>
+                </div>
+                
+                <h3>3.1 Interface Overview</h3>
+                
+                <p>The tool is divided into three main sections:</p>
+                
+                <div class="concept-card">
+                    <h4>1. Control Panel (Top)</h4>
+                    <p>Primary action buttons for managing your composition:</p>
+                    <ul>
+                        <li><code>Add Image Layer</code> - Creates a new layer</li>
+                        <li><code>Generate Prompt</code> - Compiles all settings into a prompt</li>
+                        <li><code>Copy Prompt</code> - Copies to clipboard</li>
+                        <li><code>Export Prompt</code> - Saves as .txt file</li>
+                        <li><code>Clear All</code> - Resets the entire tool</li>
+                    </ul>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>2. Image Layers Section (Middle)</h4>
+                    <p>Each layer has its own configuration panel with:</p>
+                    <ul>
+                        <li>Image description and metadata</li>
+                        <li>Position and transform controls</li>
+                        <li>Visual effect parameters</li>
+                        <li>Masking and edge options</li>
+                        <li>Remove button for deletion</li>
+                    </ul>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>3. Output Settings & Result (Bottom)</h4>
+                    <p>Global settings that affect the final composition:</p>
+                    <ul>
+                        <li>Aspect ratio and dimensions</li>
+                        <li>Resolution and quality</li>
+                        <li>File format options</li>
+                        <li>Additional processing flags</li>
+                        <li>Generated prompt display area</li>
+                    </ul>
+                </div>
+                
+                <h3>3.2 Recommended Workflow</h3>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div class="step-content">
+                        <strong>Plan Your Composition</strong><br>
+                        Before opening the tool, sketch or visualize your final image. Know which images you'll use and their purpose (background, subject, detail, etc.).
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div class="step-content">
+                        <strong>Start with Background</strong><br>
+                        Add your first layer - this should be your background. Set it to 100% opacity and position it to fill or fit as needed.
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div class="step-content">
+                        <strong>Add Main Subject</strong><br>
+                        Add the primary focus of your composition. Configure its position, size, and any necessary masking.
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <div class="step-content">
+                        <strong>Layer Additional Elements</strong><br>
+                        Add any supporting images, textures, or details. Remember: each new layer goes on top of previous ones.
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">5</span>
+                    <div class="step-content">
+                        <strong>Fine-Tune Parameters</strong><br>
+                        Adjust opacity, blend modes, and effects to achieve visual harmony. Pay attention to lighting consistency.
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">6</span>
+                    <div class="step-content">
+                        <strong>Configure Output Settings</strong><br>
+                        Set your aspect ratio, resolution, and format based on final use (web, print, social media, etc.).
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">7</span>
+                    <div class="step-content">
+                        <strong>Generate & Review Prompt</strong><br>
+                        Click "Generate Prompt" and review the output for completeness and accuracy.
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">8</span>
+                    <div class="step-content">
+                        <strong>Export & Use</strong><br>
+                        Copy or export your prompt and use it with your chosen AI image composition tool.
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    Save your prompt file after each major composition. Use descriptive filenames like "product-beach-composite-v1.txt" for version control.
+                </div>
+            </div>
+
+            <!-- SECTION 4: LAYERS -->
+            <div class="section" id="layers">
+                <h2><span class="icon">📐</span> 4. Understanding Layers & Composition Theory</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Master the layer stacking paradigm</li>
+                        <li>Apply composition rules (Rule of Thirds, Golden Ratio)</li>
+                        <li>Understand depth and perspective in composition</li>
+                        <li>Learn to create visual hierarchy</li>
+                    </ul>
+                </div>
+                
+                <h3>4.1 Layer Stacking Order</h3>
+                
+                <div class="concept-card">
+                    <h4>The Z-Index Concept</h4>
+                    <p>Layers are stacked in the order you add them:</p>
+                    <ul>
+                        <li><strong>Layer 1 (First added):</strong> Bottom - Usually background</li>
+                        <li><strong>Layer 2:</strong> Above Layer 1 - Mid-ground elements</li>
+                        <li><strong>Layer 3:</strong> Above Layer 2 - Foreground elements</li>
+                        <li><strong>Layer N (Last added):</strong> Top - Details, overlays, effects</li>
+                    </ul>
+                    
+                    <div class="technical-note">
+                        Think of layers like sheets of glass stacked on top of each other. You look down through all the sheets to see the final composition.
+                    </div>
+                </div>
+                
+                <h3>4.2 Composition Principles</h3>
+                
+                <div class="concept-card">
+                    <h4>Rule of Thirds</h4>
+                    <p>Divide your canvas into a 3×3 grid. Place important elements along the lines or at intersection points.</p>
+                    <ul>
+                        <li>Strong compositional points: (33%, 33%), (66%, 33%), (33%, 66%), (66%, 66%)</li>
+                        <li>Creates visual balance and interest</li>
+                        <li>Avoid centering everything - it's static</li>
+                    </ul>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Golden Ratio (φ ≈ 1.618)</h4>
+                    <p>More sophisticated than Rule of Thirds, based on mathematical proportion found in nature.</p>
+                    <ul>
+                        <li>Primary focal point: approximately 38% from edge</li>
+                        <li>Secondary focal point: approximately 62% from edge</li>
+                        <li>Creates naturally pleasing compositions</li>
+                    </ul>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Visual Weight & Balance</h4>
+                    <p>Elements have "visual weight" based on:</p>
+                    <ul>
+                        <li><strong>Size:</strong> Larger = heavier</li>
+                        <li><strong>Color:</strong> Warm/bright colors = heavier</li>
+                        <li><strong>Contrast:</strong> High contrast = heavier</li>
+                        <li><strong>Complexity:</strong> Detailed areas = heavier</li>
+                    </ul>
+                    <p>Balance heavy elements on one side with lighter elements or negative space on the other.</p>
+                </div>
+                
+                <h3>4.3 Depth & Perspective</h3>
+                
+                <div class="concept-card">
+                    <h4>Creating Depth Illusion</h4>
+                    <p>Make 2D compositions feel three-dimensional:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Technique</th>
+                                <th>How to Apply</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Size Variation</strong></td>
+                                <td>Larger objects = closer; smaller = farther</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Overlap</strong></td>
+                                <td>Objects in front partially cover those behind</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Blur Gradient</strong></td>
+                                <td>Sharp foreground, blurred background (depth of field)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Color Temperature</strong></td>
+                                <td>Warm foreground, cool background (atmospheric perspective)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contrast</strong></td>
+                                <td>High contrast foreground, low contrast background</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>4.4 Layer Purpose Classification</h3>
+                
+                <p>The tool asks you to classify each layer's purpose. Understanding these categories is crucial:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Purpose</th>
+                            <th>Description</th>
+                            <th>Typical Settings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Background</strong></td>
+                            <td>The backdrop; fills entire canvas</td>
+                            <td>100% opacity, Size: 100%, Position: fill</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Main Subject</strong></td>
+                            <td>Primary focus of composition</td>
+                            <td>High opacity (80-100%), prominent position, masking often needed</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Specific Part</strong></td>
+                            <td>Supporting elements, details, overlays</td>
+                            <td>Variable opacity and blend modes, strategic positioning</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- SECTION 5: PARAMETERS -->
+            <div class="section" id="parameters">
+                <h2><span class="icon">⚙️</span> 5. Technical Parameters Explained</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Understand each adjustable parameter's function</li>
+                        <li>Learn appropriate value ranges for different effects</li>
+                        <li>Master the interaction between multiple parameters</li>
+                        <li>Apply parameters strategically for desired outcomes</li>
+                    </ul>
+                </div>
+                
+                <h3>5.1 Transform Parameters</h3>
+                
+                <div class="concept-card">
+                    <h4>Position</h4>
+                    <div class="definition">
+                        Determines where on the canvas the layer's reference point is placed.
+                    </div>
+                    
+                    <p><strong>Options:</strong></p>
+                    <ul>
+                        <li><strong>Top-Left, Top-Center, Top-Right</strong> - Upper canvas positions</li>
+                        <li><strong>Center-Left, Center, Center-Right</strong> - Middle row positions</li>
+                        <li><strong>Bottom-Left, Bottom-Center, Bottom-Right</strong> - Lower canvas positions</li>
+                        <li><strong>Custom</strong> - Specify exact X, Y coordinates or percentages</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h4>Example Use Cases:</h4>
+                        <div class="example-title">✅ Portrait Photography:</div>
+                        <p>Subject at Center or Rule of Thirds position (66% from left)</p>
+                        
+                        <div class="example-title">✅ Product Photos:</div>
+                        <p>Product at Center with symmetric background</p>
+                        
+                        <div class="example-title">✅ Text Overlays:</div>
+                        <p>Text at Top-Center or Bottom-Center for readability</p>
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Size</h4>
+                    <div class="definition">
+                        Controls the scale of the layer relative to the canvas.
+                    </div>
+                    
+                    <p><strong>Range:</strong> 10% to 200%</p>
+                    <ul>
+                        <li><strong>10-30%:</strong> Small details, logos, decorative elements</li>
+                        <li><strong>40-60%:</strong> Medium subjects, balanced composition</li>
+                        <li><strong>70-100%:</strong> Large subjects, backgrounds, full coverage</li>
+                        <li><strong>110-200%:</strong> Zoom-in effect, cropped view, dramatic close-ups</li>
+                    </ul>
+                    
+                    <div class="warning-box">
+                        Scaling up beyond 100% can cause pixelation if the original image resolution is insufficient. Always use high-resolution source images for upscaling.
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Rotation</h4>
+                    <div class="definition">
+                        Rotates the layer around its center point.
+                    </div>
+                    
+                    <p><strong>Range:</strong> -180° to +180°</p>
+                    <ul>
+                        <li><strong>0°:</strong> No rotation (default)</li>
+                        <li><strong>±5-15°:</strong> Subtle dynamic tilt (common in collages)</li>
+                        <li><strong>90° or -90°:</strong> Portrait ↔ Landscape orientation</li>
+                        <li><strong>180°:</strong> Complete inversion</li>
+                    </ul>
+                    
+                    <div class="tip-box">
+                        Use small rotation angles (±5-10°) to add energy and break rigid layouts. Large rotations should have compositional purpose.
+                    </div>
+                </div>
+                
+                <h3>5.2 Opacity & Visibility</h3>
+                
+                <div class="concept-card">
+                    <h4>Opacity</h4>
+                    <div class="definition">
+                        Controls layer transparency from completely transparent (invisible) to completely opaque.
+                    </div>
+                    
+                    <p><strong>Range:</strong> 0% to 100%</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Value</th>
+                                <th>Effect</th>
+                                <th>Common Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0%</td>
+                                <td>Invisible</td>
+                                <td>Hiding layer temporarily</td>
+                            </tr>
+                            <tr>
+                                <td>10-30%</td>
+                                <td>Very subtle</td>
+                                <td>Watermarks, subtle textures</td>
+                            </tr>
+                            <tr>
+                                <td>40-60%</td>
+                                <td>Translucent</td>
+                                <td>Overlays, ghost effects, blending</td>
+                            </tr>
+                            <tr>
+                                <td>70-90%</td>
+                                <td>Mostly opaque</td>
+                                <td>Soft integration with background</td>
+                            </tr>
+                            <tr>
+                                <td>100%</td>
+                                <td>Fully opaque</td>
+                                <td>Primary subjects, backgrounds</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="technical-note">
+                        <strong>Alpha Channel:</strong> Opacity is achieved through the alpha channel in image processing. An alpha value of 0 means fully transparent, while 255 (or 1.0 in normalized form) means fully opaque.
+                    </div>
+                </div>
+                
+                <h3>5.3 Color & Light Adjustments</h3>
+                
+                <div class="concept-card">
+                    <h4>Brightness</h4>
+                    <div class="definition">
+                        Adjusts the overall lightness or darkness of the layer.
+                    </div>
+                    
+                    <p><strong>Range:</strong> -100% to +100%</p>
+                    <ul>
+                        <li><strong>Negative values:</strong> Darken the image</li>
+                        <li><strong>0%:</strong> Original brightness (default)</li>
+                        <li><strong>Positive values:</strong> Lighten the image</li>
+                    </ul>
+                    
+                    <div class="tip-box">
+                        When combining multiple images, match brightness levels for coherent lighting. Background slightly darker than foreground creates depth.
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Contrast</h4>
+                    <div class="definition">
+                        Controls the difference between light and dark areas.
+                    </div>
+                    
+                    <p><strong>Range:</strong> -100% to +100%</p>
+                    <ul>
+                        <li><strong>Negative values:</strong> Flatten image, reduce difference between lights/darks</li>
+                        <li><strong>0%:</strong> Original contrast (default)</li>
+                        <li><strong>Positive values:</strong> Enhance difference between lights/darks (more punchy)</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h4>Contrast Application:</h4>
+                        <div class="example-title">✅ Low Contrast (-30 to -50):</div>
+                        <p>Soft, dreamy backgrounds; vintage filter effects</p>
+                        
+                        <div class="example-title">✅ High Contrast (+30 to +50):</div>
+                        <p>Dramatic portraits; enhancing product details; text legibility</p>
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Saturation</h4>
+                    <div class="definition">
+                        Controls color intensity/vividness.
+                    </div>
+                    
+                    <p><strong>Range:</strong> -100% to +100%</p>
+                    <ul>
+                        <li><strong>-100%:</strong> Grayscale (no color)</li>
+                        <li><strong>-50%:</strong> Muted, desaturated colors</li>
+                        <li><strong>0%:</strong> Original saturation (default)</li>
+                        <li><strong>+50%:</strong> Vivid, enhanced colors</li>
+                        <li><strong>+100%:</strong> Maximum color intensity (can look artificial)</li>
+                    </ul>
+                </div>
+                
+                <h3>5.4 Effects & Filters</h3>
+                
+                <div class="concept-card">
+                    <h4>Blur</h4>
+                    <div class="definition">
+                        Applies Gaussian blur to soften the image.
+                    </div>
+                    
+                    <p><strong>Range:</strong> 0px to 50px</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Blur Amount</th>
+                                <th>Effect</th>
+                                <th>Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0px</td>
+                                <td>Sharp (no blur)</td>
+                                <td>Default; primary subjects</td>
+                            </tr>
+                            <tr>
+                                <td>2-5px</td>
+                                <td>Subtle softening</td>
+                                <td>Soft focus portraits; gentle depth of field</td>
+                            </tr>
+                            <tr>
+                                <td>10-20px</td>
+                                <td>Moderate blur</td>
+                                <td>Background separation; de-emphasizing elements</td>
+                            </tr>
+                            <tr>
+                                <td>25-50px</td>
+                                <td>Strong blur</td>
+                                <td>Abstract backgrounds; bokeh effect; privacy blurring</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="technical-note">
+                        <strong>Gaussian Blur:</strong> The most common blur algorithm, named after the Gaussian distribution (bell curve). It produces natural-looking blur with smooth falloff.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 6: BLEND MODES -->
+            <div class="section" id="blend-modes">
+                <h2><span class="icon">🎨</span> 6. Blend Modes: Theory & Application</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Understand the mathematical basis of blend modes</li>
+                        <li>Learn when to use each blend mode type</li>
+                        <li>Master creative applications of blending</li>
+                        <li>Recognize blend mode categories and behaviors</li>
+                    </ul>
+                </div>
+                
+                <h3>6.1 What Are Blend Modes?</h3>
+                
+                <div class="concept-card">
+                    <h4>Definition</h4>
+                    <div class="definition">
+                        <strong>Blend modes</strong> are mathematical algorithms that determine how pixels in a layer combine with pixels in layers beneath it. They calculate the final color based on the source color (current layer) and destination color (layers below).
+                    </div>
+                    
+                    <p>Formula: <code>Result = BlendFunction(Source, Destination)</code></p>
+                </div>
+                
+                <h3>6.2 Blend Mode Categories</h3>
+                
+                <div class="concept-card">
+                    <h4>Normal Mode</h4>
+                    <p><strong>Algorithm:</strong> Direct overlay with opacity control</p>
+                    <p><strong>Formula:</strong> <code>Result = Source × Opacity + Destination × (1 - Opacity)</code></p>
+                    
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li>No color interaction between layers</li>
+                        <li>Simply places one image over another</li>
+                        <li>Opacity is the only variable</li>
+                    </ul>
+                    
+                    <p><strong>Use when:</strong> You want straightforward layering without color effects</p>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Darken Modes (Multiply)</h4>
+                    <p><strong>Algorithm:</strong> Multiplies color values</p>
+                    <p><strong>Formula:</strong> <code>Result = (Source × Destination) / 255</code></p>
+                    
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li>Always produces darker colors (never lighter)</li>
+                        <li>White (255) becomes transparent</li>
+                        <li>Black (0) remains black</li>
+                        <li>Mimics overlaying colored glass or filters</li>
+                    </ul>
+                    
+                    <p><strong>Use for:</strong></p>
+                    <ul>
+                        <li>Adding shadows</li>
+                        <li>Texture overlays on photographs</li>
+                        <li>Color grading with darker tones</li>
+                        <li>Simulating traditional print methods</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h4>Practical Example:</h4>
+                        <div class="example-title">Scenario: Adding wood texture to a photo</div>
+                        <p><strong>Setup:</strong></p>
+                        <ul>
+                            <li>Layer 1: Your photograph</li>
+                            <li>Layer 2: Wood texture image</li>
+                            <li>Blend Mode: Multiply</li>
+                            <li>Opacity: 40-60%</li>
+                        </ul>
+                        <p><strong>Result:</strong> The wood grain appears naturally integrated, darkening the image while preserving detail.</p>
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Lighten Modes (Screen)</h4>
+                    <p><strong>Algorithm:</strong> Inverted multiplication (opposite of Multiply)</p>
+                    <p><strong>Formula:</strong> <code>Result = 255 - ((255 - Source) × (255 - Destination) / 255)</code></p>
+                    
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li>Always produces lighter colors (never darker)</li>
+                        <li>Black (0) becomes transparent</li>
+                        <li>White (255) remains white</li>
+                        <li>Mimics projecting light through layers</li>
+                    </ul>
+                    
+                    <p><strong>Use for:</strong></p>
+                    <ul>
+                        <li>Adding light effects (lens flares, glows)</li>
+                        <li>Brightening specific areas</li>
+                        <li>Creating luminous overlays</li>
+                        <li>Simulating fog or mist</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h4>Practical Example:</h4>
+                        <div class="example-title">Scenario: Adding sun flare to landscape</div>
+                        <p><strong>Setup:</strong></p>
+                        <ul>
+                            <li>Layer 1: Landscape photo</li>
+                            <li>Layer 2: Sun flare image (bright on black background)</li>
+                            <li>Blend Mode: Screen</li>
+                            <li>Opacity: 60-80%</li>
+                        </ul>
+                        <p><strong>Result:</strong> The bright parts of the flare add to the scene while the black background becomes invisible.</p>
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Contrast Modes (Overlay)</h4>
+                    <p><strong>Algorithm:</strong> Combination of Multiply and Screen based on destination brightness</p>
+                    <p><strong>Formula:</strong></p>
+                    <div class="code-block">
+If Destination < 128: Result = 2 × Source × Destination / 255
+If Destination ≥ 128: Result = 255 - 2 × (255 - Source) × (255 - Destination) / 255
+                    </div>
+                    
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li>Darkens dark areas (Multiply)</li>
+                        <li>Lightens light areas (Screen)</li>
+                        <li>Increases overall contrast</li>
+                        <li>50% gray has no effect</li>
+                    </ul>
+                    
+                    <p><strong>Use for:</strong></p>
+                    <ul>
+                        <li>General purpose blending</li>
+                        <li>Adding textures while preserving contrast</li>
+                        <li>Color grading overlays</li>
+                        <li>Enhancing depth</li>
+                    </ul>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Soft Light</h4>
+                    <p><strong>Algorithm:</strong> Gentler version of Overlay</p>
+                    
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li>Similar to Overlay but more subtle</li>
+                        <li>Mimics soft diffused lighting</li>
+                        <li>Preserves more detail than Overlay</li>
+                    </ul>
+                    
+                    <p><strong>Use for:</strong></p>
+                    <ul>
+                        <li>Subtle color corrections</li>
+                        <li>Gentle texture overlays</li>
+                        <li>Portrait retouching</li>
+                        <li>Creating mood without over-processing</li>
+                    </ul>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Hard Light</h4>
+                    <p><strong>Algorithm:</strong> More intense version of Overlay</p>
+                    
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li>Stronger effect than Overlay or Soft Light</li>
+                        <li>Simulates harsh lighting conditions</li>
+                        <li>Can create dramatic contrast</li>
+                    </ul>
+                    
+                    <p><strong>Use for:</strong></p>
+                    <ul>
+                        <li>Dramatic lighting effects</li>
+                        <li>High-contrast artistic looks</li>
+                        <li>Strong texture applications</li>
+                        <li>Creating impact</li>
+                    </ul>
+                </div>
+                
+                <h3>6.3 Blend Mode Selection Guide</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Goal</th>
+                            <th>Recommended Blend Mode</th>
+                            <th>Opacity Range</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Basic layering</td>
+                            <td>Normal</td>
+                            <td>80-100%</td>
+                        </tr>
+                        <tr>
+                            <td>Add texture</td>
+                            <td>Multiply or Overlay</td>
+                            <td>30-60%</td>
+                        </tr>
+                        <tr>
+                            <td>Add light/glow</td>
+                            <td>Screen</td>
+                            <td>40-70%</td>
+                        </tr>
+                        <tr>
+                            <td>Color grading</td>
+                            <td>Soft Light or Overlay</td>
+                            <td>20-50%</td>
+                        </tr>
+                        <tr>
+                            <td>Dramatic effect</td>
+                            <td>Hard Light</td>
+                            <td>50-80%</td>
+                        </tr>
+                        <tr>
+                            <td>Subtle integration</td>
+                            <td>Soft Light</td>
+                            <td>20-40%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="warning-box">
+                    Blend modes affect color and tone relationships. If your composition looks "off" after applying a blend mode, check if all layers have consistent white balance and color temperature.
+                </div>
+            </div>
+
+            <!-- SECTION 7: MASKING -->
+            <div class="section" id="masking">
+                <h2><span class="icon">✂️</span> 7. Masking & Edge Control Techniques</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Understand different masking techniques</li>
+                        <li>Master edge feathering for natural blending</li>
+                        <li>Learn background removal strategies</li>
+                        <li>Apply selective visibility controls</li>
+                    </ul>
+                </div>
+                
+                <h3>7.1 What is Masking?</h3>
+                
+                <div class="concept-card">
+                    <h4>Definition</h4>
+                    <div class="definition">
+                        <strong>Masking</strong> is a non-destructive technique that controls which parts of a layer are visible and which are hidden, without permanently deleting pixels.
+                    </div>
+                    
+                    <p><strong>Mask Types:</strong></p>
+                    <ul>
+                        <li><strong>Binary Mask:</strong> Pixels are either fully visible or fully hidden</li>
+                        <li><strong>Gradient Mask:</strong> Smooth transition from visible to hidden</li>
+                        <li><strong>Alpha Mask:</strong> Uses grayscale values to control transparency</li>
+                    </ul>
+                </div>
+                
+                <h3>7.2 Background Removal</h3>
+                
+                <div class="concept-card">
+                    <h4>Subject Isolation</h4>
+                    <p>The most common use of masking is removing backgrounds to isolate subjects.</p>
+                    
+                    <p><strong>Mask Types in the Tool:</strong></p>
+                    <ul>
+                        <li><strong>None:</strong> No masking (full image visible)</li>
+                        <li><strong>Remove Background:</strong> Automatically isolate the main subject</li>
+                        <li><strong>Keep Center, Fade Edges:</strong> Vignette effect</li>
+                        <li><strong>Custom Shape:</strong> Geometric or custom boundary</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h4>Typical Workflow:</h4>
+                        <p><strong>Portrait with New Background:</strong></p>
+                        <ol>
+                            <li>Layer 1: New background scene (landscape, studio, etc.)</li>
+                            <li>Layer 2: Portrait photo with "Remove Background" mask</li>
+                            <li>Result: Subject cleanly placed in new environment</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <h3>7.3 Edge Feathering</h3>
+                
+                <div class="concept-card">
+                    <h4>Understanding Feathering</h4>
+                    <div class="definition">
+                        <strong>Edge feathering</strong> creates a gradual transition at the edges of a layer, blending it smoothly with underlying layers.
+                    </div>
+                    
+                    <p><strong>Range:</strong> 0px to 200px</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feather Amount</th>
+                                <th>Effect</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0px</td>
+                                <td>Hard edges</td>
+                                <td>Geometric shapes, text, clean cuts</td>
+                            </tr>
+                            <tr>
+                                <td>10-20px</td>
+                                <td>Slight softening</td>
+                                <td>Natural photos with good isolation</td>
+                            </tr>
+                            <tr>
+                                <td>30-50px</td>
+                                <td>Noticeable blend</td>
+                                <td>Portraits, organic subjects</td>
+                            </tr>
+                            <tr>
+                                <td>75-100px</td>
+                                <td>Soft integration</td>
+                                <td>Dreamy effects, subtle overlays</td>
+                            </tr>
+                            <tr>
+                                <td>150-200px</td>
+                                <td>Strong fade</td>
+                                <td>Vignettes, transitional elements</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="tip-box">
+                        When compositing objects with fine details (hair, fur, foliage), use moderate feathering (15-30px) to avoid the "cut-out" look while preserving detail.
+                    </div>
+                </div>
+                
+                <h3>7.4 Advanced Masking Techniques</h3>
+                
+                <div class="concept-card">
+                    <h4>Gradient Masks for Depth</h4>
+                    <p>Create realistic depth of field by varying opacity across the image:</p>
+                    <ul>
+                        <li>Foreground: Sharp, high opacity</li>
+                        <li>Mid-ground: Medium opacity</li>
+                        <li>Background: Lower opacity or more blur</li>
+                    </ul>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Edge Refinement Strategies</h4>
+                    <p>For challenging edges (like hair or fur):</p>
+                    <ol>
+                        <li>Start with subject isolation mask</li>
+                        <li>Add edge feathering (20-40px)</li>
+                        <li>Slightly reduce opacity (95-98%) for natural integration</li>
+                        <li>Match lighting direction and intensity with background</li>
+                    </ol>
+                </div>
+                
+                <h3>7.5 Shadow Effects</h3>
+                
+                <div class="concept-card">
+                    <h4>Adding Realistic Shadows</h4>
+                    <p>Shadows ground objects in their environment. The tool includes shadow options:</p>
+                    
+                    <p><strong>Parameters:</strong></p>
+                    <ul>
+                        <li><strong>Shadow Offset:</strong> How far the shadow is from the object</li>
+                        <li><strong>Shadow Blur:</strong> Softness of the shadow</li>
+                        <li><strong>Shadow Color:</strong> Usually black or dark version of background color</li>
+                        <li><strong>Shadow Opacity:</strong> Strength of the shadow</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h4>Shadow Guidelines:</h4>
+                        <ul>
+                            <li><strong>Direct sunlight:</strong> Hard shadows, low blur (5-10px)</li>
+                            <li><strong>Overcast/diffused:</strong> Soft shadows, high blur (20-40px)</li>
+                            <li><strong>Indoor artificial:</strong> Medium shadows, moderate blur (10-20px)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 8: COLOR THEORY -->
+            <div class="section" id="color-theory">
+                <h2><span class="icon">🎨</span> 8. Color Theory & Image Adjustments</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Apply color harmony principles to compositions</li>
+                        <li>Understand color temperature and mood</li>
+                        <li>Master color correction for consistent compositions</li>
+                        <li>Learn about white balance and color casts</li>
+                    </ul>
+                </div>
+                
+                <h3>8.1 Color Harmony in Composition</h3>
+                
+                <div class="concept-card">
+                    <h4>Complementary Colors</h4>
+                    <p>Colors opposite on the color wheel create high contrast and visual interest:</p>
+                    <ul>
+                        <li>Blue ↔ Orange</li>
+                        <li>Red ↔ Green (use carefully - can look like Christmas)</li>
+                        <li>Purple ↔ Yellow</li>
+                    </ul>
+                    <p><strong>Use for:</strong> Creating vibrant, energetic compositions</p>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Analogous Colors</h4>
+                    <p>Colors next to each other on the color wheel create harmony:</p>
+                    <ul>
+                        <li>Blue → Blue-green → Green</li>
+                        <li>Red → Red-orange → Orange</li>
+                    </ul>
+                    <p><strong>Use for:</strong> Calm, cohesive, naturally pleasing compositions</p>
+                </div>
+                
+                <h3>8.2 Color Temperature</h3>
+                
+                <div class="concept-card">
+                    <h4>Understanding Temperature</h4>
+                    <p>Color temperature describes the warmth or coolness of an image:</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Temperature</th>
+                                <th>Colors</th>
+                                <th>Mood/Association</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Warm</strong></td>
+                                <td>Red, Orange, Yellow</td>
+                                <td>Energy, passion, comfort, warmth</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cool</strong></td>
+                                <td>Blue, Cyan, Purple</td>
+                                <td>Calm, professional, sadness, distance</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Neutral</strong></td>
+                                <td>Green, Gray, Beige</td>
+                                <td>Balance, nature, subtlety</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="important-box">
+                        When compositing, all layers should have consistent color temperature. A warm subject on a cool background (or vice versa) looks unnatural unless you're creating a specific artistic effect.
+                    </div>
+                </div>
+                
+                <h3>8.3 Color Correction Workflow</h3>
+                
+                <div class="concept-card">
+                    <h4>Matching Color Between Layers</h4>
+                    <p>To create cohesive compositions, adjust color properties:</p>
+                    
+                    <ol>
+                        <li><strong>White Balance:</strong> Ensure all layers have the same color temperature</li>
+                        <li><strong>Saturation:</strong> Match color intensity across layers</li>
+                        <li><strong>Hue Shift:</strong> If needed, shift hues to match (e.g., make all layers slightly warmer)</li>
+                        <li><strong>Brightness:</strong> Adjust so lighting looks consistent</li>
+                        <li><strong>Contrast:</strong> Match contrast levels for uniform processing</li>
+                    </ol>
+                </div>
+                
+                <h3>8.4 Saturation Strategy</h3>
+                
+                <div class="concept-card">
+                    <h4>When to Adjust Saturation</h4>
+                    
+                    <p><strong>Increase Saturation (+10 to +40%):</strong></p>
+                    <ul>
+                        <li>Dull or flat-looking images</li>
+                        <li>Product photography (make colors pop)</li>
+                        <li>Social media content (draws attention)</li>
+                        <li>Travel/landscape photos</li>
+                    </ul>
+                    
+                    <p><strong>Decrease Saturation (-10 to -40%):</strong></p>
+                    <ul>
+                        <li>Over-saturated images</li>
+                        <li>Matching different image sources</li>
+                        <li>Creating muted, sophisticated looks</li>
+                        <li>Portrait backgrounds (to emphasize subject)</li>
+                    </ul>
+                    
+                    <p><strong>Remove Saturation (-100%, Grayscale):</strong></p>
+                    <ul>
+                        <li>Black and white artistic effect</li>
+                        <li>Reducing background distraction</li>
+                        <li>Vintage/classic look</li>
+                    </ul>
+                    
+                    <div class="warning-box">
+                        Over-saturation (>+50%) can make images look artificial and hurt color fidelity. Use moderation unless seeking a specific hyper-colorful aesthetic.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 9: OUTPUT -->
+            <div class="section" id="output">
+                <h2><span class="icon">💾</span> 9. Output Optimization & Format Selection</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Select appropriate aspect ratios for different platforms</li>
+                        <li>Understand resolution requirements</li>
+                        <li>Choose optimal file formats</li>
+                        <li>Balance quality versus file size</li>
+                    </ul>
+                </div>
+                
+                <h3>9.1 Aspect Ratio Selection</h3>
+                
+                <div class="concept-card">
+                    <h4>Common Aspect Ratios & Their Uses</h4>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect Ratio</th>
+                                <th>Dimensions Example</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>16:9</strong></td>
+                                <td>1920×1080, 3840×2160</td>
+                                <td>YouTube videos, widescreen displays, presentations</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4:3</strong></td>
+                                <td>1024×768, 2048×1536</td>
+                                <td>Traditional photography, older displays</td>
+                            </tr>
+                            <tr>
+                                <td><strong>1:1</strong></td>
+                                <td>1080×1080, 2048×2048</td>
+                                <td>Instagram posts, profile pictures, square prints</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9:16</strong></td>
+                                <td>1080×1920</td>
+                                <td>Instagram/TikTok Stories, mobile vertical video</td>
+                            </tr>
+                            <tr>
+                                <td><strong>21:9</strong></td>
+                                <td>2560×1080, 3440×1440</td>
+                                <td>Ultrawide monitors, cinematic content</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3:2</strong></td>
+                                <td>3000×2000</td>
+                                <td>DSLR photography standard, print</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>9.2 Resolution Guidelines</h3>
+                
+                <div class="concept-card">
+                    <h4>Resolution by Use Case</h4>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Use Case</th>
+                                <th>Minimum Resolution</th>
+                                <th>Recommended Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Website Images</td>
+                                <td>1280×720 (720p)</td>
+                                <td>1920×1080 (1080p)</td>
+                            </tr>
+                            <tr>
+                                <td>Social Media</td>
+                                <td>1080×1080</td>
+                                <td>1200×1200 to 2048×2048</td>
+                            </tr>
+                            <tr>
+                                <td>Presentations</td>
+                                <td>1920×1080</td>
+                                <td>2560×1440 (2K)</td>
+                            </tr>
+                            <tr>
+                                <td>Digital Displays/TV</td>
+                                <td>1920×1080</td>
+                                <td>3840×2160 (4K)</td>
+                            </tr>
+                            <tr>
+                                <td>Print (8×10")</td>
+                                <td>2400×3000 @ 300 DPI</td>
+                                <td>3000×3750 @ 300 DPI</td>
+                            </tr>
+                            <tr>
+                                <td>Print (Large Poster)</td>
+                                <td>150 DPI</td>
+                                <td>200-300 DPI</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="technical-note">
+                        <strong>DPI vs PPI:</strong> DPI (Dots Per Inch) refers to printer output, while PPI (Pixels Per Inch) refers to digital displays. For digital work, think in pixels. For print, calculate: Width_inches × DPI = Width_pixels
+                    </div>
+                </div>
+                
+                <h3>9.3 File Format Decision Matrix</h3>
+                
+                <div class="concept-card">
+                    <h4>Format Comparison</h4>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>Compression</th>
+                                <th>Transparency</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>JPG/JPEG</strong></td>
+                                <td>Lossy</td>
+                                <td>No</td>
+                                <td>Photographs, web, small file size, social media</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PNG</strong></td>
+                                <td>Lossless</td>
+                                <td>Yes (Alpha)</td>
+                                <td>Graphics, logos, images needing transparency, web</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TIFF</strong></td>
+                                <td>None or lossless</td>
+                                <td>Yes</td>
+                                <td>Print, archival, professional photography</td>
+                            </tr>
+                            <tr>
+                                <td><strong>WebP</strong></td>
+                                <td>Lossy or lossless</td>
+                                <td>Yes</td>
+                                <td>Modern web, Google platforms, smaller than PNG/JPG</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="example-box">
+                        <h4>Format Selection Examples:</h4>
+                        <div class="example-title">✅ Instagram Post:</div>
+                        <p>JPG, 1080×1080, quality 85-95%</p>
+                        
+                        <div class="example-title">✅ Website Hero Image:</div>
+                        <p>WebP (with JPG fallback), 1920×1080, quality 80%</p>
+                        
+                        <div class="example-title">✅ Logo on Website:</div>
+                        <p>PNG with transparency, appropriate size (2-4× display size for retina)</p>
+                        
+                        <div class="example-title">✅ Print Magazine:</div>
+                        <p>TIFF, 300 DPI, CMYK color space</p>
+                    </div>
+                </div>
+                
+                <h3>9.4 Quality vs. File Size</h3>
+                
+                <div class="concept-card">
+                    <h4>Optimization Strategies</h4>
+                    
+                    <p><strong>For Web (Priority: Fast Loading):</strong></p>
+                    <ul>
+                        <li>Use JPG quality 75-85% for photographs</li>
+                        <li>Use PNG-8 for simple graphics (256 colors)</li>
+                        <li>Consider WebP for modern browsers</li>
+                        <li>Resize to exact display dimensions (no larger)</li>
+                    </ul>
+                    
+                    <p><strong>For Social Media (Priority: Quick Upload, Decent Quality):</strong></p>
+                    <ul>
+                        <li>Follow platform recommendations (Instagram: 1080×1080)</li>
+                        <li>JPG quality 85-95%</li>
+                        <li>sRGB color space</li>
+                    </ul>
+                    
+                    <p><strong>For Print (Priority: Maximum Quality):</strong></p>
+                    <ul>
+                        <li>300 DPI minimum</li>
+                        <li>TIFF or high-quality JPG (95-100%)</li>
+                        <li>CMYK color space</li>
+                        <li>Include bleed area (extra margin)</li>
+                    </ul>
+                    
+                    <p><strong>For Portfolio/Archive (Priority: Longevity):</strong></p>
+                    <ul>
+                        <li>PNG or TIFF</li>
+                        <li>High resolution</li>
+                        <li>No compression or lossless</li>
+                    </ul>
+                </div>
+                
+                <h3>9.5 Advanced Output Settings</h3>
+                
+                <div class="concept-card">
+                    <h4>Additional Options Explained</h4>
+                    
+                    <p><strong>HDR Output:</strong></p>
+                    <ul>
+                        <li>High Dynamic Range - greater range of brightness</li>
+                        <li>Use for: Modern displays, HDR-compatible content</li>
+                        <li>Requires: HDR source images or tone mapping</li>
+                    </ul>
+                    
+                    <p><strong>sRGB Color Profile:</strong></p>
+                    <ul>
+                        <li>Standard color space for web and general viewing</li>
+                        <li>Use for: Almost everything digital</li>
+                        <li>Ensures consistent color across different displays</li>
+                    </ul>
+                    
+                    <p><strong>Preserve Details:</strong></p>
+                    <ul>
+                        <li>Sharpening and detail enhancement during resize</li>
+                        <li>Use for: Downscaling images, preventing softness</li>
+                        <li>Can add slight grain at high settings</li>
+                    </ul>
+                    
+                    <p><strong>Anti-Aliasing:</strong></p>
+                    <ul>
+                        <li>Smooths jagged edges on diagonal lines and curves</li>
+                        <li>Use for: Text, graphics, geometric shapes</li>
+                        <li>Usually enabled by default</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SECTION 10: EXERCISES -->
+            <div class="section" id="exercises">
+                <h2><span class="icon">🎓</span> 10. Practical Exercises & Projects</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Apply learned concepts to real projects</li>
+                        <li>Build practical prompt engineering skills</li>
+                        <li>Develop a personal workflow</li>
+                        <li>Create portfolio-worthy compositions</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>Exercise 1: Simple Background Replacement</h4>
+                    <span class="difficulty beginner">Beginner</span>
+                    
+                    <p><strong>Objective:</strong> Replace the background of a portrait with a new scene.</p>
+                    
+                    <p><strong>Requirements:</strong></p>
+                    <ul>
+                        <li>1 portrait photo (person against simple background)</li>
+                        <li>1 background image (landscape, studio, etc.)</li>
+                    </ul>
+                    
+                    <p><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Add background image as Layer 1
+                            <ul>
+                                <li>Position: Center, Size: 100%</li>
+                                <li>Apply slight blur (5-10px) for depth</li>
+                            </ul>
+                        </li>
+                        <li>Add portrait as Layer 2
+                            <ul>
+                                <li>Description: Describe the person and their pose</li>
+                                <li>Purpose: Main subject</li>
+                                <li>Mask Type: Remove background</li>
+                                <li>Edge Feathering: 20-30px</li>
+                            </ul>
+                        </li>
+                        <li>Match colors
+                            <ul>
+                                <li>Adjust brightness and saturation to match background</li>
+                                <li>Ensure color temperature is consistent</li>
+                            </ul>
+                        </li>
+                        <li>Add shadow (optional but recommended)</li>
+                        <li>Set output: 4:3, High resolution, PNG</li>
+                    </ol>
+                    
+                    <p><strong>Success Criteria:</strong></p>
+                    <ul>
+                        <li>Clean edge separation between subject and background</li>
+                        <li>Natural-looking integration (no "cut-out" appearance)</li>
+                        <li>Consistent lighting direction</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>Exercise 2: Instagram Square Collage</h4>
+                    <span class="difficulty beginner">Beginner</span>
+                    
+                    <p><strong>Objective:</strong> Create a 3-photo collage for Instagram.</p>
+                    
+                    <p><strong>Requirements:</strong></p>
+                    <ul>
+                        <li>3 related photos (vacation, portfolio samples, event photos)</li>
+                        <li>1 background (solid color or subtle texture)</li>
+                    </ul>
+                    
+                    <p><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Layer 1: Background (white, cream, or subtle pattern)</li>
+                        <li>Layer 2: Photo 1 (left side)
+                            <ul>
+                                <li>Position: Custom - 25% from left, centered vertically</li>
+                                <li>Size: 40%</li>
+                                <li>Rotation: -5° for dynamic feel</li>
+                                <li>Shadow: Enabled</li>
+                            </ul>
+                        </li>
+                        <li>Layer 3: Photo 2 (center)
+                            <ul>
+                                <li>Position: Center</li>
+                                <li>Size: 45%</li>
+                                <li>No rotation (or minimal)</li>
+                                <li>Shadow: Enabled</li>
+                            </ul>
+                        </li>
+                        <li>Layer 4: Photo 3 (right side)
+                            <ul>
+                                <li>Position: Custom - 75% from left, centered vertically</li>
+                                <li>Size: 40%</li>
+                                <li>Rotation: +5°</li>
+                                <li>Shadow: Enabled</li>
+                            </ul>
+                        </li>
+                        <li>Output: 1:1 (square), 1080×1080, JPG</li>
+                    </ol>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>Exercise 3: Product Photography Composite</h4>
+                    <span class="difficulty intermediate">Intermediate</span>
+                    
+                    <p><strong>Objective:</strong> Place a product in a lifestyle scene.</p>
+                    
+                    <p><strong>Requirements:</strong></p>
+                    <ul>
+                        <li>1 product photo (on white/transparent background)</li>
+                        <li>1 lifestyle scene (kitchen counter, desk, outdoor table)</li>
+                        <li>Optional: 1 texture overlay</li>
+                    </ul>
+                    
+                    <p><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Layer 1: Lifestyle scene background</li>
+                        <li>Layer 2: Product
+                            <ul>
+                                <li>Remove background</li>
+                                <li>Position strategically using Rule of Thirds</li>
+                                <li>Size: 30-50% depending on composition</li>
+                                <li>Edge feathering: 15-25px</li>
+                                <li>Shadow: Yes - match lighting of scene</li>
+                            </ul>
+                        </li>
+                        <li>Layer 3 (optional): Subtle texture overlay
+                            <ul>
+                                <li>Blend mode: Multiply or Soft Light</li>
+                                <li>Opacity: 15-30%</li>
+                            </ul>
+                        </li>
+                        <li>Color corrections
+                            <ul>
+                                <li>Match product white balance to scene</li>
+                                <li>Adjust brightness for lighting consistency</li>
+                            </ul>
+                        </li>
+                        <li>Output: 16:9 for web, High resolution</li>
+                    </ol>
+                    
+                    <p><strong>Challenge:</strong> Make the lighting look 100% natural.</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>Exercise 4: Double Exposure Effect</h4>
+                    <span class="difficulty intermediate">Intermediate</span>
+                    
+                    <p><strong>Objective:</strong> Create an artistic double exposure.</p>
+                    
+                    <p><strong>Requirements:</strong></p>
+                    <ul>
+                        <li>1 portrait (profile or silhouette works best)</li>
+                        <li>1 texture/landscape (nature, cityscape, abstract)</li>
+                    </ul>
+                    
+                    <p><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Layer 1: Portrait
+                            <ul>
+                                <li>High contrast (+30-50%)</li>
+                                <li>Potentially desaturate slightly</li>
+                            </ul>
+                        </li>
+                        <li>Layer 2: Texture/landscape
+                            <ul>
+                                <li>Blend mode: Screen or Overlay</li>
+                                <li>Opacity: 50-80%</li>
+                                <li>Position to align interesting elements with face</li>
+                            </ul>
+                        </li>
+                        <li>Fine-tune
+                            <ul>
+                                <li>Adjust saturation for artistic effect</li>
+                                <li>May need to brighten or darken individual layers</li>
+                            </ul>
+                        </li>
+                        <li>Output: 4:3 or 1:1, High resolution, PNG</li>
+                    </ol>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>Exercise 5: Multi-Layer Complex Composition</h4>
+                    <span class="difficulty advanced">Advanced</span>
+                    
+                    <p><strong>Objective:</strong> Create a poster-quality composition with 5+ layers.</p>
+                    
+                    <p><strong>Requirements:</strong></p>
+                    <ul>
+                        <li>1 background scene</li>
+                        <li>2-3 main subjects (people, products, or elements)</li>
+                        <li>1-2 texture/overlay layers</li>
+                        <li>1 text/graphic layer (represented by description)</li>
+                    </ul>
+                    
+                    <p><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Plan your composition on paper first</li>
+                        <li>Layer 1: Background with atmospheric blur</li>
+                        <li>Layer 2-4: Main subjects
+                            <ul>
+                                <li>Vary sizes for depth perception</li>
+                                <li>Use foreground/mid-ground/background positioning</li>
+                                <li>Apply different blur levels</li>
+                            </ul>
+                        </li>
+                        <li>Layer 5: Color grading overlay
+                            <ul>
+                                <li>Solid color with Soft Light or Overlay blend</li>
+                                <li>Low opacity (15-30%)</li>
+                            </ul>
+                        </li>
+                        <li>Layer 6: Texture or light effect
+                            <ul>
+                                <li>Appropriate blend mode</li>
+                                <li>Strategic opacity</li>
+                            </ul>
+                        </li>
+                        <li>Layer 7: Text/graphic space (describe placement)</li>
+                        <li>Output: Custom dimensions, Ultra resolution, PNG or TIFF</li>
+                    </ol>
+                    
+                    <p><strong>Evaluation Criteria:</strong></p>
+                    <ul>
+                        <li>Visual hierarchy (clear focus)</li>
+                        <li>Color harmony</li>
+                        <li>Lighting consistency</li>
+                        <li>Professional finish quality</li>
+                        <li>Creative use of blend modes</li>
+                    </ul>
+                </div>
+                
+                <div class="tip-box">
+                    After completing each exercise, save your prompt file and document what worked well and what you'd change. Building a personal prompt library accelerates future work.
+                </div>
+            </div>
+
+            <!-- SECTION 11: ADVANCED -->
+            <div class="section" id="advanced">
+                <h2><span class="icon">🚀</span> 11. Advanced Techniques</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Master advanced composition strategies</li>
+                        <li>Learn prompt optimization techniques</li>
+                        <li>Understand iterative refinement workflow</li>
+                        <li>Develop professional-level skills</li>
+                    </ul>
+                </div>
+                
+                <h3>11.1 Advanced Layer Strategies</h3>
+                
+                <div class="concept-card">
+                    <h4>Adjustment Layers Concept</h4>
+                    <p>While this tool doesn't have traditional adjustment layers, you can simulate them:</p>
+                    <ul>
+                        <li>Add a solid color layer with Overlay blend mode for color grading</li>
+                        <li>Add a gradient layer with Soft Light for vignetting</li>
+                        <li>Use texture overlays with Multiply for film grain</li>
+                    </ul>
+                </div>
+                
+                <div class="concept-card">
+                    <h4>Layer Groups & Organization</h4>
+                    <p>When working with many layers, mentally group them:</p>
+                    <ul>
+                        <li><strong>Base Group:</strong> Background and environment (Layers 1-2)</li>
+                        <li><strong>Subject Group:</strong> Main focus elements (Layers 3-5)</li>
+                        <li><strong>Effects Group:</strong> Overlays, textures, color grading (Layers 6-8)</li>
+                        <li><strong>Detail Group:</strong> Fine details, highlights, shadows (Layers 9+)</li>
+                    </ul>
+                </div>
+                
+                <h3>11.2 Prompt Optimization</h3>
+                
+                <div class="concept-card">
+                    <h4>Writing Better Descriptions</h4>
+                    <p>The quality of your layer descriptions directly affects results:</p>
+                    
+                    <div class="example-box">
+                        <h4>Description Quality Comparison:</h4>
+                        
+                        <div class="example-title">❌ Poor Description:</div>
+                        <p>"A person"</p>
+                        
+                        <div class="example-title">⚠️ Okay Description:</div>
+                        <p>"Woman in red dress"</p>
+                        
+                        <div class="example-title">✅ Good Description:</div>
+                        <p>"Professional portrait of woman, age 30, wearing red cocktail dress, neutral studio lighting"</p>
+                        
+                        <div class="example-title">✅✅ Excellent Description:</div>
+                        <p>"Professional portrait: Caucasian woman, early 30s, long brunette hair, wearing red cocktail dress, standing pose, soft studio lighting from camera-left at 45°, neutral gray background, shot with 85mm lens creating shallow depth of field"</p>
+                    </div>
+                    
+                    <p><strong>Key Elements to Include:</strong></p>
+                    <ul>
+                        <li>Subject type and details</li>
+                        <li>Colors and materials</li>
+                        <li>Lighting characteristics</li>
+                        <li>Perspective or angle</li>
+                        <li>Style or mood</li>
+                        <li>Technical details if relevant</li>
+                    </ul>
+                </div>
+                
+                <h3>11.3 Lighting Coherence</h3>
+                
+                <div class="concept-card">
+                    <h4>Matching Light Direction</h4>
+                    <p>For realistic compositions, light must be consistent:</p>
+                    
+                    <ol>
+                        <li>Identify light direction in your background (where are highlights/shadows?)</li>
+                        <li>Ensure all subjects have lighting from the same direction</li>
+                        <li>Match light intensity (brightness) across layers</li>
+                        <li>Match light color temperature (warm/cool)</li>
+                        <li>Add shadows that match the light source</li>
+                    </ol>
+                    
+                    <div class="technical-note">
+                        <strong>Professional Tip:</strong> When compositing outdoors, sun position is key. Subjects should all have sun highlights on the same side. Indoor scenes should have consistent window or lamp direction.
+                    </div>
+                </div>
+                
+                <h3>11.4 Iterative Refinement</h3>
+                
+                <div class="concept-card">
+                    <h4>The Professional Workflow</h4>
+                    <ol>
+                        <li><strong>Draft Pass:</strong>
+                            <ul>
+                                <li>Rough layout with basic positioning</li>
+                                <li>Generate prompt and test</li>
+                                <li>Evaluate overall composition</li>
+                            </ul>
+                        </li>
+                        <li><strong>Refinement Pass:</strong>
+                            <ul>
+                                <li>Adjust problematic areas</li>
+                                <li>Fine-tune opacity and blend modes</li>
+                                <li>Add edge feathering</li>
+                                <li>Regenerate and test</li>
+                            </ul>
+                        </li>
+                        <li><strong>Detail Pass:</strong>
+                            <ul>
+                                <li>Perfect color matching</li>
+                                <li>Add shadows and highlights</li>
+                                <li>Apply final effects</li>
+                            </ul>
+                        </li>
+                        <li><strong>Polish Pass:</strong>
+                            <ul>
+                                <li>Overall color grading</li>
+                                <li>Sharpening/detail enhancement</li>
+                                <li>Final quality check</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                
+                <h3>11.5 Common Problems & Solutions</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Problem</th>
+                            <th>Cause</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Subjects look "cut out"</td>
+                            <td>Hard edges, no feathering</td>
+                            <td>Add 20-40px edge feathering, reduce opacity slightly (98%)</td>
+                        </tr>
+                        <tr>
+                            <td>Floating objects</td>
+                            <td>No shadows</td>
+                            <td>Add shadows matching light direction and intensity</td>
+                        </tr>
+                        <tr>
+                            <td>Color mismatch</td>
+                            <td>Different white balance</td>
+                            <td>Adjust saturation, brightness, potentially add color overlay</td>
+                        </tr>
+                        <tr>
+                            <td>Inconsistent lighting</td>
+                            <td>Sources lit from different directions</td>
+                            <td>Adjust brightness per layer, add directional highlights</td>
+                        </tr>
+                        <tr>
+                            <td>Scale looks wrong</td>
+                            <td>Size proportions unrealistic</td>
+                            <td>Research real-world proportions, adjust sizes accordingly</td>
+                        </tr>
+                        <tr>
+                            <td>Flat/no depth</td>
+                            <td>Everything same sharpness/contrast</td>
+                            <td>Apply blur gradient, vary contrast, adjust saturation by depth</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- SECTION 12: ASSESSMENT -->
+            <div class="section" id="assessment">
+                <h2><span class="icon">📝</span> 12. Self-Assessment & Quiz</h2>
+                
+                <div class="learning-objective">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Evaluate your understanding of key concepts</li>
+                        <li>Identify areas needing more study</li>
+                        <li>Reinforce learning through application</li>
+                    </ul>
+                </div>
+                
+                <h3>Knowledge Check Questions</h3>
+                
+                <div class="quiz-question">
+                    <h5>Question 1: Layer Order</h5>
+                    <p>You're creating a composition with a landscape background, a person, and a text overlay. What's the correct layer order from bottom to top?</p>
+                    <p><strong>A)</strong> Text, Person, Landscape<br>
+                    <strong>B)</strong> Person, Landscape, Text<br>
+                    <strong>C)</strong> Landscape, Person, Text<br>
+                    <strong>D)</strong> It doesn't matter</p>
+                    
+                    <p style="margin-top: 15px; color: #666;"><em>Correct Answer: C - Background first, then subject, then overlay elements on top.</em></p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h5>Question 2: Blend Modes</h5>
+                    <p>You want to add a wood texture to a photo but keep the photo details visible while darkening the overall tone. Which blend mode should you use?</p>
+                    <p><strong>A)</strong> Normal<br>
+                    <strong>B)</strong> Screen<br>
+                    <strong>C)</strong> Multiply<br>
+                    <strong>D)</strong> Overlay</p>
+                    
+                    <p style="margin-top: 15px; color: #666;"><em>Correct Answer: C - Multiply darkens while preserving detail and making white areas transparent.</em></p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h5>Question 3: Opacity</h5>
+                    <p>What opacity range is most appropriate for a subtle watermark?</p>
+                    <p><strong>A)</strong> 10-30%<br>
+                    <strong>B)</strong> 50-70%<br>
+                    <strong>C)</strong> 80-90%<br>
+                    <strong>D)</strong> 100%</p>
+                    
+                    <p style="margin-top: 15px; color: #666;"><em>Correct Answer: A - Watermarks should be visible but not distracting.</em></p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h5>Question 4: Resolution</h5>
+                    <p>You're creating an image for a printed 8×10" photo. What minimum DPI should you use?</p>
+                    <p><strong>A)</strong> 72 DPI<br>
+                    <strong>B)</strong> 150 DPI<br>
+                    <strong>C)</strong> 300 DPI<br>
+                    <strong>D)</strong> 600 DPI</p>
+                    
+                    <p style="margin-top: 15px; color: #666;"><em>Correct Answer: C - 300 DPI is the professional standard for photo printing.</em></p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h5>Question 5: Edge Feathering</h5>
+                    <p>You're compositing a portrait onto a new background. The edges look too sharp and artificial. What's the best solution?</p>
+                    <p><strong>A)</strong> Reduce opacity to 50%<br>
+                    <strong>B)</strong> Add 20-40px edge feathering<br>
+                    <strong>C)</strong> Change blend mode to Multiply<br>
+                    <strong>D)</strong> Apply maximum blur</p>
+                    
+                    <p style="margin-top: 15px; color: #666;"><em>Correct Answer: B - Edge feathering creates natural transitions without affecting the overall image.</em></p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h5>Question 6: File Formats</h5>
+                    <p>Which format should you use for a logo that needs a transparent background for web use?</p>
+                    <p><strong>A)</strong> JPG<br>
+                    <strong>B)</strong> PNG<br>
+                    <strong>C)</strong> TIFF<br>
+                    <strong>D)</strong> WebP</p>
+                    
+                    <p style="margin-top: 15px; color: #666;"><em>Correct Answer: B - PNG supports transparency and is widely supported on the web.</em></p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h5>Question 7: Color Temperature</h5>
+                    <p>Your subject was photographed under warm indoor lighting, but your background is a cool outdoor scene. What should you do?</p>
+                    <p><strong>A)</strong> Leave both as-is for contrast<br>
+                    <strong>B)</strong> Make the background warmer or the subject cooler<br>
+                    <strong>C)</strong> Convert everything to black and white<br>
+                    <strong>D)</strong> Use Screen blend mode</p>
+                    
+                    <p style="margin-top: 15px; color: #666;"><em>Correct Answer: B - Matching color temperature is essential for realistic compositions.</em></p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h5>Question 8: Composition</h5>
+                    <p>According to the Rule of Thirds, where should you position your main subject for the strongest composition?</p>
+                    <p><strong>A)</strong> Dead center (50%, 50%)<br>
+                    <strong>B)</strong> At intersection points (~33% or 66% from edges)<br>
+                    <strong>C)</strong> In a corner<br>
+                    <strong>D)</strong> Randomly positioned</p>
+                    
+                    <p style="margin-top: 15px; color: #666;"><em>Correct Answer: B - Rule of Thirds intersection points create dynamic, balanced compositions.</em></p>
+                </div>
+                
+                <h3>Practical Assessment</h3>
+                
+                <div class="exercise-box">
+                    <h4>Final Project: Portfolio Piece</h4>
+                    <span class="difficulty advanced">Final Assessment</span>
+                    
+                    <p><strong>Objective:</strong> Create a complete, professional-quality composition demonstrating all learned skills.</p>
+                    
+                    <p><strong>Requirements:</strong></p>
+                    <ul>
+                        <li>Minimum 4 layers, maximum 8</li>
+                        <li>At least one masked subject</li>
+                        <li>Use of at least 2 different blend modes</li>
+                        <li>Consistent lighting and color temperature</li>
+                        <li>Professional output settings for specific use case</li>
+                        <li>Written explanation (300 words) of your decisions</li>
+                    </ul>
+                    
+                    <p><strong>Grading Criteria:</strong></p>
+                    <ul>
+                        <li><strong>Technical Execution (40%):</strong> Proper use of parameters, clean masking, appropriate settings</li>
+                        <li><strong>Compositional Quality (30%):</strong> Visual hierarchy, balance, Rule of Thirds, depth</li>
+                        <li><strong>Color & Lighting (20%):</strong> Consistency, mood, temperature matching</li>
+                        <li><strong>Creativity & Originality (10%):</strong> Unique concept, artistic vision</li>
+                    </ul>
+                    
+                    <p><strong>Submission:</strong></p>
+                    <ul>
+                        <li>Exported prompt file (.txt)</li>
+                        <li>Final rendered image (if using AI tool)</li>
+                        <li>Written explanation document</li>
+                    </ul>
+                </div>
+                
+                <div class="tip-box">
+                    Review completed exercises regularly. Mastery comes from repetition and refinement. Keep building your prompt library!
+                </div>
+            </div>
+
+            <!-- CONCLUSION -->
+            <div class="section">
+                <h2><span class="icon">🎓</span> Conclusion & Next Steps</h2>
+                
+                <p>Congratulations on completing this educational manual on prompt engineering for digital image composition! You've learned the technical fundamentals, compositional theory, and practical skills needed to create professional-quality composition prompts.</p>
+                
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>Prompt engineering</strong> is about precise, detailed communication with AI systems</li>
+                    <li><strong>Layer-based thinking</strong> is fundamental to digital composition</li>
+                    <li><strong>Technical parameters</strong> (opacity, blend modes, positioning) must work together</li>
+                    <li><strong>Color and lighting consistency</strong> make or break realism</li>
+                    <li><strong>Edge control</strong> (feathering, masking) prevents the "cut-out" look</li>
+                    <li><strong>Output optimization</strong> depends on final use case</li>
+                </ul>
+                
+                <h3>Continuing Your Education</h3>
+                
+                <p><strong>Practice Projects:</strong></p>
+                <ul>
+                    <li>Complete all exercises in this manual</li>
+                    <li>Recreate professional work you admire</li>
+                    <li>Accept real-world projects (even small ones)</li>
+                    <li>Challenge yourself with increasingly complex compositions</li>
+                </ul>
+                
+                <p><strong>Further Learning Resources:</strong></p>
+                <ul>
+                    <li>Study professional photography and graphic design principles</li>
+                    <li>Learn color theory in depth</li>
+                    <li>Explore traditional art composition rules</li>
+                    <li>Study how light works in photography</li>
+                    <li>Practice with professional editing software (Photoshop, GIMP)</li>
+                </ul>
+                
+                <p><strong>Building Your Portfolio:</strong></p>
+                <ul>
+                    <li>Document your process and decisions</li>
+                    <li>Save prompts alongside final images</li>
+                    <li>Note what worked and what didn't</li>
+                    <li>Create case studies of successful projects</li>
+                    <li>Share your work and get feedback</li>
+                </ul>
+                
+                <div class="important-box">
+                    Remember: This tool creates prompts, not images. You'll need AI composition tools (like Claude, ChatGPT, or specialized software) to execute your prompts. The quality of your prompt directly determines the quality of your result.
+                </div>
+                
+                <h3>Professional Development Path</h3>
+                
+                <ol>
+                    <li><strong>Beginner Phase:</strong>
+                        <ul>
+                            <li>Master basic 2-3 layer compositions</li>
+                            <li>Learn to match colors and lighting</li>
+                            <li>Understand all parameters</li>
+                        </ul>
+                    </li>
+                    <li><strong>Intermediate Phase:</strong>
+                        <ul>
+                            <li>Create complex multi-layer compositions</li>
+                            <li>Use advanced blend modes creatively</li>
+                            <li>Develop your own style</li>
+                        </ul>
+                    </li>
+                    <li><strong>Advanced Phase:</strong>
+                        <ul>
+                            <li>Work on client projects</li>
+                            <li>Teach others</li>
+                            <li>Push creative boundaries</li>
+                            <li>Contribute to the community</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <p style="text-align: center; margin-top: 40px; font-size: 1.3em; color: #667eea;">
+                    <strong>Good luck on your creative journey!</strong><br>
+                    <span style="font-size: 0.8em; margin-top: 10px; display: block;">Keep learning, keep creating, keep improving.</span>
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3 style="margin-bottom: 15px;">Authors & Contributors</h3>
+            <p style="margin-bottom: 10px; line-height: 1.8;">
+                <strong>G. Korakakis</strong> - Application Development & Tool Design<br>
+                <strong>K. Dalacosta</strong> - Educational Content & Pedagogy<br>
+                <strong>Our. Efstathiadou</strong> - Technical Documentation & Research<br>
+                <strong>A. Karamani</strong> - Interface Design & User Experience<br>
+                <strong>Claude (Anthropic)</strong> - Educational Manual Development
+            </p>
+            <p style="margin-top: 25px;"><strong>Photo Composition Prompt Generator - Educational Manual</strong></p>
+            <p style="margin-top: 10px; opacity: 0.9;">For Digital Image Editing Students</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">This manual may be printed, saved, or distributed for educational purposes.</p>
+            <p style="margin-top: 10px; font-size: 0.9em;"><strong>Citation:</strong> Korakakis, G., Dalacosta, K., Efstathiadou, O., Karamani, A., & Claude. (2025). <em>Photo Composition Prompt Generator: Educational Manual for Digital Image Editing</em>.</p>
+            <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.7;">© 2025 - Comprehensive guide for learning prompt engineering and digital composition</p>
+        </div>
+    </div>
+</body>
+</html>
