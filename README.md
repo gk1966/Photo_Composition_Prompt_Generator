@@ -1,3 +1,3 @@
-# Photo_Composition_Prompt_Generator
+# Photo Composition Prompt Generator: An Educational Tool for AI-Assisted Multi-Layered Image Composition
 This tool focuses on teaching **composition** and **visual vocabulary**. It assists users in structuring complex prompts for AI models by decomposing multi-layered image assembly into discrete operations . The goal is to enhance the quality and precision of generated images through the **explicit specification** of visual composition.
 Citation If you use this software in academic work, you can cite it as: Photo Composition Prompt Generator. Korakakis, G. (2026). Department of Graphic Design and Visual Communication School of Applied Arts and Culture Uniwa (University of West Attica) [[https://doi.org/10.5281/zenodo.19474264]
